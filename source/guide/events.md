@@ -1,9 +1,9 @@
-title: Listening for Events
+title: Обработка Событий
 type: guide
 order: 6
 ---
 
-You can use the `v-on` directive to bind event listeners to DOM events. It can be bound to either an event handler function (without the invocation parentheses) or an inline expression. If a handler function is provided, it will get the original DOM event as the argument. The event also comes with an extra property: `targetVM`, pointing to the particular ViewModel the event was triggered on:
+Вы можете использовать директиву `v-on` для того чтобы назначить обрабочики событий DOM. Обработчиком может быть, как функция, так и выражение. В случае, если в качестве обработчика используется функция, она получит событие DOM в качестве одного из аргументов. Событие также будет содержать дополнительное свойство: `targetVM`, которое указывает на Модель Представления в которой оно было вызванно.
 
 ``` html
 <div id="demo">
@@ -27,9 +27,9 @@ new Vue({
 })
 ```
 
-## Invoke Handler with Expression
+## Вызов Обработчика с Выражением
 
-`targetVM` could be useful when `v-on` is used with `v-repeat`, since the latter creates a lot of child ViewModels. However, it is often more convenient to use an invocation expression passing in `this`, which equals the current context ViewModel:
+`targetVM` может применяться, когда `v-on` используется с директивой `v-repeat`, так как последняя создаёт большое количество дочерних экземпляров Vue. Однако, обычно, более удобно использовать выражение `this`, указывающее на текущую Модель Представления:
 
 ``` html
 <ul id="list">
@@ -54,7 +54,7 @@ new Vue({
 })
 ```
 
-When you want to access the original DOM event in an expression handler, you can pass it in as `$event`:
+Если вы хотите получить доступ к событию DOM в выражении, вы можете указать его как `$event`:
 
 ``` html
 <button v-on="click: submit('hello!', $event)">Submit</button>
@@ -72,30 +72,30 @@ When you want to access the original DOM event in an expression handler, you can
 /* ... */
 ```
 
-## The Special `key` Filter
+## Спеицальный Фильтр `key`
 
-When listening for keyboard events, we often need to check for common key codes. Vue.js provides a special `key` filter that can only be used with `v-on` directives. It takes a single argument that denotes the key code to check for:
+При обработке событий нажатия клавиш, часто требуется проверять их значения. Vue.js предоставляет специальный фильтр `key` который используется только с директивой `v-on`. Он получает единственный аргумент описывающий код клавиши для проверки:
 
 ``` html
 <!-- only call vm.submit() when the keyCode is 13 -->
 <input v-on="keyup:submit | key 13">
 ```
 
-It also has a few presets for commonly used keys:
+Также вы можете использовать названия для некоторых клавиш:
 
 ``` html
 <!-- same as above -->
 <input v-on="keyup:submit | key 'enter'">
 ```
 
-Check the API reference for a [full list of key filter presets](/api/filters.html#key).
+В разделе API доступен [полный список клавиш](/api/filters.html#key).
 
-## Why Listeners in HTML?
+## Использование Обработчиков в HTML?
 
-You might be concerned that this whole event listening approach violates the good old rules about "separation of concern". Rest assured - since all Vue.js handler functions and expressions are strictly bound to the ViewModel that's handling the current View, it won't cause any maintainance difficulty. In fact, there are several benefits in using `v-on`:
+Возможно, вы обеспокоены тем, что такой подход к обработке событий нарушает старое доброе правило о разделении. На самом деле беспокоиться не о чем – все функции и выражения жёстко привязаны к Модели Представления, и не могут вызвать каких-либо сложностей при поддержке проекта. Использование `v-on` приносит некоторые приемущества:
 
-1. It makes it easier to locate the handler function implementations within your JS code by simply skimming the HTML template.
-2. Since you don't have to manually attach event listeners in JS, your ViewModel code can be pure logic and DOM-free. This makes it easier to test.
-3. When a ViewModel is destroyed, all event listeners are automatically removed. You don't need to worry about cleaning it up yourself.
+1. Упрощеается поиск функции обработчика в JS коде - требуется просто посмотреть в шаблон.
+2. Так как не требуется вручную указывать обработчики событий в JS, код Модели Представления остаётся свободным от DOM. Такой код проще тестировать.
+3. При уничтожении Модели Представления, обработчики событий автоматически удаляются. Не требуется делать это вручную.
 
-Next up: [Handling Forms](/guide/forms.html).
+Далее: [Управление Формами](/guide/forms.html).

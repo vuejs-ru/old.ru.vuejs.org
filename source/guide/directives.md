@@ -1,11 +1,11 @@
-title: Directives
+title: Директивы
 type: guide
 order: 3
 ---
 
-## Synopsis
+## Введение
 
-If you have not used AngularJS before, you probably don't know what a directive is. Essentially, a directive is some special token in the markup that tells the library to do something to a DOM element. In Vue.js, the concept of directive is drastically simpler than that in Angular. A Vue.js directive can only appear in the form of a prefixed HTML attribute that takes the following format:
+Если вы не имели дело с AngularJS, вы скорее всего не знаете, что такое директивы. По сути, директива – это специальный токен в разметке, который сообщает библиотеке совершить какие-либо операции с элементом DOM. В Vue.js, концепция директив намного проще, чем в Angular. Директива Vue.js представляется как атрибут HTML со специальным префиксом, который выглядит следующим образом:
 
 ``` html
 <element
@@ -13,41 +13,41 @@ If you have not used AngularJS before, you probably don't know what a directive 
 </element>
 ```
 
-## A Simple Example
+## Простой Пример
 
 ``` html
 <div v-text="message"></div>
 ```
 
-Here the prefix is `v` which is the default. The directive ID is `text` and the expression is `message`. This directive instructs Vue.js to update the div's `textContent` whenever the `message` property on the Vue instance changes.
+Здесь префиксом является `v` – это префикс по умолчанию. Идентификатор директивы – `text`, а выражение – `message`. Данная директива сообщает Vue.js, что требуется обновить содержимое элемента div в соответствии со свойством `message` экземпляра Vue, когда происходит его изменение.
 
-## Inline Expressions
+## Встроенные Выражения
 
 ``` html
 <div v-text="'hello ' + user.firstName + ' ' + user.lastName"></div>
 ```
 
-Here we are using a computed expression instead of a single property key. Vue.js automatically tracks the properties an expression depends on and refreshes the directive whenever a dependency changes. Thanks to async batch updates, even when multiple dependencies change, an expression will only be updated once every event loop.
+Здесь мы используем вычисляемое выражение, вместо одного свойства. Vue.js автоматически отслеживает свойства, от которыйх зависит выражение и обновляет директиву, когда её зависимости изменяются. Благодаря асинхронным пакетным обновлениям даже при изменении нескольких зависимостей, выражение обновится один раз за один цикл обработки событий.
 
-You should use expressions wisely and avoid putting too much logic in your templates, especially statements with side effects (with the exception of event listener expressions). To discourage the overuse of logic inside templates, Vue.js inline expressions are limited to **one statement only**. For bindings that require more complicated operations, use [Computed Properties](/guide/computed.html) instead.
+Вы должны использовать выражения с умом, и избегать черезмерного усложнения логики в ваших шаблонах, особенно следует избегать выражений, которые могут вызывать побочные действия (за исключением, пожалуй, добавления обработчиков событий). Чтобы препятствовать усложнению шаблонов, выражения в Vue.js ограниченны применением **только одного оператора**. Для привязки данных, которая требуют более сложных операций, используйте [Вычисляемые Свойства](/guide/computed.html).
 
-<p class="tip">For security reasons, in inline expressions you can only access properties and methods present on the current context Vue instance and its parents.</p>
+<p class="tip">Из соображений безопасности, во встроенных выражениях вы можете получить доступ только к методам и свойствам текущего и родительских контекстов экземпляров Vue.</p>
 
-## Argument
+## Аргументы
 
 ``` html
 <div v-on="click : clickHandler"></div>
 ```
 
-Some directives require an argument before the keypath or expression. In this example the `click` argument indicates we want the `v-on` directive to listen for a click event and then call the `clickHandler` method of the ViewModel instance.
+Некоторые директивы принимают аргументы перед выражением. В этом примере аргумент `click` указывает, что мы хотим чтобы директива `v-on` установила обработчик события щелчка по элементу с методом `clickHandler` экземпляра Представления.
 
-## Filters
+## Фильтры
 
-Filters can be appended to directive keypaths or expressions to further process the value before updating the DOM. Filters are denoted by a single pipe (`|`) as in shell scripts. For more details see [Filters in Depth](/guide/filters.html).
+Фильтры могут быть использованы в директивах для осуществелния преобразования значений до обнавления DOM. Они обозначаются вертикальной чертой ("|") как в шелл-скриптах. Более подробно о оних можно прочитать в разделе [Фильтры в деталях](/guide/filters.html).
 
-## Multiple Clauses
+## Несколько Значений
 
-You can create multiple bindings of the same directive in a single attribute, separated by commas. Under the hood they are bound as multiple directive instances.
+Вы можете передавать несколько атрибутов со значениями и таким образом осуществлять несколько привязок данных внутри одной директивы. При этом требуется отделить их запятой. Внутри Vue они будут преобразованны в несколько экземпляров данной директивы.
 
 ``` html
 <div v-on="
@@ -58,36 +58,36 @@ You can create multiple bindings of the same directive in a single attribute, se
 </div>
 ```
 
-## Literal Directives
+## Строковые Директивы
 
-Some directives don't create data bindings - they simply take the attribute value as a literal string. For example the `v-ref` directive:
+Некоторые директивы не создают привязки данных – они просто получают атрибут, как строку. К примеру директива `v-ref`:
 
 ``` html
 <my-component v-ref="some-string-id"></my-component>
 ```
 
-Here `"some-string-id"` is not a reactive expression - Vue.js will not attempt to look it up in the component's data.
+Здесь `"some-string-id"` не является чувствительным к изменению выражением – Vue.js не будет пытаться искать его в данных компонента.
 
-In some cases you can also use the mustache syntax to make a literal directive reactive:
+В некоторых случаях вы можете также использовать mustache чтобы сделать строковые директивы чувствительными к изменению:
 
 ``` html
 <div v-show="showMsg" v-transition="{{dynamicTransitionId}}"></div>
 ```
 
-However, note that `v-transition` is the only directive that has this feature. Mustache expressions in other literal directives, e.g. `v-ref` and `v-el`, are evaluated **only once**. After the directive has been compiled, it will no longer react to value changes.
+Тем не менее, обратите внимание, что `v-transition` – единственная директива, которая имеет поддержку данной функции. Выражения в других строковых директивах, таких как `v-ref` и `v-el`, будут вычислены **только один раз**. После компиляции директивы, они больше не будут реагировать на изменение значения.
 
-A full list of literal directives can be found in the [API reference](/api/directives.html#Literal_Directives).
+Полный список строковых директив доступен в разделе [API](/api/directives.html#Literal_Directives).
 
-## Empty Directives
+## Пустые Директивы
 
-Some directives don't even expect an attribute value - they simply do something to the element once and only once. For example the `v-pre` directive:
+Некоторые директивы не требует какого-либо значения – они просто делают что-то с элементом ровно один раз. К примеру директива `v-pre`:
 
 ``` html
 <div v-pre>
-  <!-- markup in here will not be compiled -->
+  <!-- здесь компиляция разметки не будет произведена -->
 </div>
 ```
 
-A full list of empty directives can be found in the [API reference](/api/directives.html#Empty_Directives).
+Полный список пустых директив доступен в разделе [API](/api/directives.html#Empty_Directives).
 
-Next, let's talk about [Filters](/guide/filters.html).
+Теперь давайте поговорим о [Фильтрах](/guide/filters.html).
