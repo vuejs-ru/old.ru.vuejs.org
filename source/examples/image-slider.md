@@ -1,8 +1,7 @@
-title: Image Slider Component
+title: Слайдер изображений
 type: examples
 order: 6
 ---
-
-> This example mainly showcases the spec-compliant &lt;content/&gt; insertion points implementation.
+> Данный пример илюстрирует использование тега &lt;content/&gt;:
 
 <iframe width="100%" height="500" src="http://jsfiddle.net/yyx990803/qnbmymfm/embedded/result,html,js,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
