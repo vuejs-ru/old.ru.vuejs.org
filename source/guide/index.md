@@ -1,13 +1,13 @@
-title: Getting Started
+title: Обзор
 type: guide
 order: 2
 ---
 
-## Introduction
+## Вступление
 
-Vue.js is a library for building interactive web interfaces.
+Vue.js - библиотеке для построения интерактивных веб интерфейсов.
 
-Technically, Vue.js is focused on the [ViewModel](#ViewModel) layer of the MVVM pattern. It connects the [View](#View) and the [Model](#Model) via two way data bindings. Actual DOM manipulations and output formatting are abstracted away into [Directives](#Directives) and [Filters](#Filters).
+Технически, Vue.js фокусируется только на [ViewModel](#ViewModel) слое MVVM паттерна. Она соединяет [View](#View) и [Model](#Model) посредством two way data bindings (*Прим.переводчика: здесь и далее специфические устоявшиеся термины оставлены в англ. оригинале*). Actual DOM manipulations and output formatting are abstracted away into [Directives](#Directives) and [Filters](#Filters).
 
 Philosophically, the goal is to provide the benefits of reactive data binding and composable view components with an API that is as simple as possible. It is not a full-blown framework - it is designed to be a view layer that is simple and flexible. You can use it alone for rapid prototyping, or mix and match with other libraries for a custom front-end stack. It's also a natural fit for no-backend services such as Firebase.
 

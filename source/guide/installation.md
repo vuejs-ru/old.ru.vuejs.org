@@ -1,4 +1,4 @@
-title: Installation
+title: Установка
 type: guide
 order: 1
 vue_version: 0.12.6
@@ -7,9 +7,9 @@ min_size: 67.73
 gz_size: 22.00
 ---
 
-> **Compatibility Note:** Vue.js does not support IE8 and below.
+> **Совместимость:** Vue.js не поддерживает IE8 и ниже.
 
-## Standalone
+## Самостоятельная установка
 
 Simply download and include with a script tag. `Vue` will be registered as a global variable.
 
@@ -48,6 +48,6 @@ var Vue = require('yyx990803/vue@dev')
 
 The standalone downloads or versions installed via Bower are wrapped with UMD so they can be used directly as an AMD module.
 
-## Ready?
+## Готово?
 
-[Let's Get Started](/guide/).
+[Тогда приступим к Обзору!](/guide/)
