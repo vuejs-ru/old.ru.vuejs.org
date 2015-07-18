@@ -1,10 +1,12 @@
 # vuejs.org
 
-This site is built with [hexo](http://hexo.io/). Site content is written in Markdown format located in `source`. Pull requests welcome!
+Это перевод документации [Vue.js](http://vuejs.org) на русский язык.
 
-## Developing
+Для сборки данного сайта используется [hexo](http://hexo.io/). Статьи в Markdown хранятся в папке `source`. Оставляйте правки и улучшения в качестве пулл-реквестов.
 
-Start a dev server at `localhost:4000`:
+## Разработка
+
+Установить зависимости и запустить сервер для разработки по адресу `localhost:4000` :
 
 ```
 $ npm install -g hexo-cli
