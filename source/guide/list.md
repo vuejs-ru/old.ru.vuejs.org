@@ -1,11 +1,11 @@
-title: Displaying a List
+title: Отображение списков
 type: guide
 order: 5
 ---
 
-You can use the `v-repeat` directive to repeat a template element based on an Array of objects on the ViewModel. For every object in the Array, the directive will create a child Vue instance using that object as its `$data` object. These child instances inherit all data on the parent, so in the repeated element you have access to properties on both the repeated instance and the parent instance. In addition, you get access to the `$index` property, which will be the corresponding Array index of the rendered instance.
+Вы можете использовать директиву `v-repeat` для многократного вывода шаблона с массивом объектов в качестве модели представления. Для каждого объекта в массиве, директива создаст дочерний экземпляр Vue, используя объект в качестве свойства `$data`. Экземпляры наследуют данные родителя, таким образом, вы можете осуществлять доступ к данным как текущего так и родительского экземпляра. В дополнение, вы получаете доступ к свойству `$index`, которое является индексом текущего объекта в массиве.
 
-**Example:**
+**Пример:**
 
 ``` html
 <ul id="demo">
@@ -28,7 +28,7 @@ var demo = new Vue({
 })
 ```
 
-**Result:**
+**Результат:**
 
 <ul id="demo"><li v-repeat="items" class="item-{&#123;$index&#125;}">{&#123;$index&#125;} - {&#123;parentMsg&#125;} {&#123;childMsg&#125;}</li></ul>
 <script>
@@ -44,9 +44,9 @@ var demo = new Vue({
 })
 </script>
 
-## Block Repeat
+## Использование с Блоками
 
-Sometimes you might want to repeat a block of more than one nodes - in that case, you can use a `<template>` tag to wrap the repeat block. The `<template>` tag here merely serves as a semantic wrapper. For example:
+Иногда может потребоваться вывести несколько узлов – в этом случае, вы можете использовать тег `<template>`, и обернуть в него нужный блок. Тег `<template>` в данном случае служит для семантической обёртки блока. Например:
 
 ``` html
 <ul>
@@ -57,9 +57,9 @@ Sometimes you might want to repeat a block of more than one nodes - in that case
 </ul>
 ```
 
-## Arrays of Primitive Values
+## Массивы Примитивных Типов
 
-For Arrays containing primitive values, you can access the value simply as `$value`:
+Для массивов содержащих примитивные значения, вы можете получить доступ к значению с помощью `$value`:
 
 ``` html
 <ul id="tags">
@@ -78,7 +78,7 @@ new Vue({
 })
 ```
 
-**Result:**
+**Результат:**
 <ul id="tags" class="demo"><li v-repeat="tags">{&#123;$value&#125;}</li></ul>
 <script>
 new Vue({
@@ -89,9 +89,9 @@ new Vue({
 })
 </script>
 
-## Using an identifier
+## Использование Идентификатора
 
-Sometimes we might want to have more explicit variable access instead of implicitly falling back to parent scope. You can do that by providing an argument to the `v-repeat` directive and use it as the identifier for the item being iterated:
+Иногда требуется получить явный доступ к переменной вместо использования родительского контекста. Вы можете добиться подобного поведения, предоставив идентификатор текущего элемента в качестве аргумента директивы `v-repeat` следующим образом:
 
 ``` html
 <ul id="users">
@@ -114,7 +114,7 @@ new Vue({
 })
 ```
 
-**Result:**
+**Результат:**
 <ul id="users" class="demo"><li v-repeat="user: users">{&#123;user.name&#125;} - {&#123;user.email&#125;}</li></ul>
 <script>
 new Vue({
@@ -128,53 +128,52 @@ new Vue({
 })
 </script>
 
-<p class="tip">Using an identifier with `v-repeat` in general results in more readable templates and slightly better performance.</p>
+<p class="tip">Использование идентификатора вместе с `v-repeat` положительно влияет на читабельность шаблонов и производительность.</p>
 
-## Mutation Methods
+## Модифицирующие методы
 
-Under the hood, Vue.js intercepts an observed Array's mutating methods (`push()`, `pop()`, `shift()`, `unshift()`, `splice()`, `sort()` and `reverse()`) so they will also trigger View updates.
+Vue.js перехватывает модифицирующие методы массива который находится под наблюдением (`push()`, `pop()`, `shift()`, `unshift()`, `splice()`, `sort()` и `reverse()`), таким образом они также будут вызывать обновления Представления.
 
 ``` js
-// the DOM will be updated accordingly
+// DOM представление будет обновлено
 demo.items.unshift({ childMsg: 'Baz' })
 demo.items.pop()
 ```
 
-## Augmented Methods
+## Дополнительные Методы
 
-Vue.js augments observed Arrays with two convenience methods: `$set()` and `$remove()`.
+Vue.js снабжает массивы двумя удобными методами: `$set()` и `$remove()`.
 
-You should avoid directly setting elements of a data-bound Array with indices, because those changes will not be picked up by Vue.js. Instead, use the augmented `$set()` method:
+Вы должны избегать устанавливать значения элементов массива по индексу, так как эти изменения не будут подхваченны Vue.js. Вместо этого используйте дополнительный метод `$set()`:
 
 ``` js
-// same as `demo.items[0] = ...` but triggers view update
+// тоже что и `demo.items[0] = ...` но будет выполнено обновление
 demo.items.$set(0, { childMsg: 'Changed!'})
 ```
 
-`$remove()` is just syntax sugar for `splice()`. It will remove the element at the given index. When the argument is not a number, `$remove()` will search for that value in the array and remove the first occurrence.
+`$remove()` является синтаксическим сахаром для метода `splice()`. Он удаляет элемент с заданным индексом. Если аргумент не является числом, `$remove()` удалит первое вхождение найденное в массиве.
 
 ``` js
-// remove the item at index 0
+// удалить элемент с индексом 0
 demo.items.$remove(0)
 ```
 
-## Replacing an Array
+## Замена Массива
 
-When you are using non-mutating methods, e.g. `filter()`, `concat()` or `slice()`, the returned Array will be a different instance. In that case, you can just replace the old Array with the new one:
+Когда вы используете методы, которые не вызывают изменение переменной, такие как `filter()`, `concat()` или `slice()`, возвращаемый массив будет другим экземпляром. В таком случае, вы можете просто заменить старый массив новым:
 
 ``` js
 demo.items = demo.items.filter(function (item) {
   return item.childMsg.match(/Hello/)
 })
 ```
+Можно подумать, что данное действие уничтожит текущий DOM и построит новый. Но не волнуйтесь – Vue.js распознает элементы массива, которые уже были привязаны к экземплярам Vue и будет использовать их если это возможно.
 
-You might think this will blow away the existing DOM and re-build everything. But worry not - Vue.js recognizes array elements that already have an associated Vue instance and will reuse those instances whenever possible.
+## Использование `track-by`
 
-## Using `track-by`
+В некоторых случаях, вам может понадобиться заменить текущий массив массивом с абсолютно другими объектами, например после вызова метода API. Поскольку по-умолчанию `v-repeat` определяет возможность переиспользования уже имеющихся экземпляров и их DOM элементов, это может вызвать полное перепостроение списка элементов. Но если каждый из объектов массива имеет уникальный идентификатор, вы можете использовать `track-by` чтобы подсказать Vue.js какие из этих элементов можно использовать повторно.
 
-In some cases, you might need to replace the Array with completely new objects - e.g. ones returned from an API call. Since by default `v-repeat` determines the reusability of an existing child instance and its DOM nodes by tracking the identity of its data object, this could cause the entire list to be re-rendered. However, if each of your data objects has a unique id property, then you can use a `track-by` param to give Vue.js a hint so that it can reuse existing instances as much as possible.
-
-For example, if your data looks like this:
+К примеру, если имеется массив:
 
 ``` js
 {
@@ -184,8 +183,7 @@ For example, if your data looks like this:
   ]
 }
 ```
-
-Then you can give the hint like this:
+Вы можете использовать `track-by` так:
 
 ``` html
 <div v-repeat="items" track-by="_uid">
@@ -193,15 +191,15 @@ Then you can give the hint like this:
 </div>
 ```
 
-Later on, when you replace the `items` array and Vue.js encounters a new object with `_uid: '88f869d'`, it knows it can reuse the existing instance with the same `_uid`.
+Позже, когда вы замените массив `items` на новый, и Vue.js натолкнётся на объект с `_uid: '88f869d'`, будет использован старый экземпляр Vue для этого объекта с таким же `_uid`.
 
-If you don't have a unique key to track by, you can also use `track-by="$index"`. Make sure to use this carefully though, because when tracking by `$index`, instead of moving the child instances and DOM nodes, Vue will simply reuse them in place in the order they were first created. Avoid using `track-by="$index"` in two situations: when your repeated block contains form inputs that can cause the list to re-render; or when you are repeating a component with mutable state in addition to the repeated data being assigned to it.
+Если объекты не имеют уникального ключа, вы можете использовать `track-by="$index"`. Такое применение требует осторожности, потому что вместо перемещения дочерних экземпляров и элементов DOM, Vue будет просто переиспользовать их в таком порядке, в каком они были созданы. Избегайте использования `track-by="$index"` в двух случаях: когда требуется вывести блок содержащий элементы формы; или когда вы используете для вывода компоненты с изменяемым состоянием и передачей данных из перебираемого массива.
 
-<p class="tip">Using `track-by` properly can greatly increase the performance when re-rendering large `v-repeat` lists using completely new data.</p>
+<p class="tip">Правильное использование `track-by` может значительно увеличить производительность при повторном рендеринге больших списков `v-repeat` с использованием новых данных.</p>
 
-## Iterating Through An Object
+## Итерация по Свойствам Объекта
 
-You can also use `v-repeat` to iterate through the properties of an Object. Each repeated instance will have a special property `$key`. For primitive values, you also get `$value` which is similar to primitive values in Arrays.
+Вы можете также использовать `v-repeat` для перебора свойств объекта. Каждый экземпляр в таком случае будет иметь специальное свойство `$key`. Для простых значений, вы, как и раньше, можете использовать `$value` для того чтобы получить значение ключа.
 
 ``` html
 <ul id="repeat-object">
@@ -232,7 +230,7 @@ new Vue({
 })
 ```
 
-**Result:**
+**Результат:**
 <ul id="repeat-object" class="demo"><li v-repeat="primitiveValues">{&#123;$key&#125;} : {&#123;$value&#125;}</li><li>===</li><li v-repeat="objectValues">{&#123;$key&#125;} : {&#123;msg&#125;}</li></ul>
 <script>
 new Vue({
@@ -255,11 +253,11 @@ new Vue({
 })
 </script>
 
-<p class="tip">In ECMAScript 5 there is no way to detect when a new property is added to an Object, or when a property is deleted from an Object. To deal with that, observed objects will be augmented with three methods: `$add(key, value)`, `$set(key, value)` and `$delete(key)`. These methods can be used to add / delete properties from observed objects while triggering the desired View updates. The difference between `$add` and `$set` is that `$add` will return early if the key already exists on the object, so just calling `obj.$add(key)` won't overwrite the existing value with `undefined`.</p>
+<p class="tip">В стандарте ECMAScript 5 нет способа отловить добавление или удаление свойство объекта. Для обхода этого ограничения объекты, находящиеся под наблюдением Vue, наделены тремя методами: `$add(key, value)`, `$set(key, value)` и `$delete(key)`. Данные методы могут быть использованы для добавления / удаления свойств объектов с последующим изменением Представления. Разница между `$add` и `$set` заключается в том, что `$add` добавит ключ только в том случае, когда его не существует, так вызов `obj.$add(key)` не может изменить текущее значение ключа на `undefined`.</p>
 
-## Iterating Over a Range
+## Итерация по Интервалу
 
-`v-repeat` can also take an integer Number. In this case it will repeat the template that many times.
+`v-repeat` также может принимать целое число в качестве аргумента. В таком случае, шаблон будет выведен указанное число раз.
 
 ``` html
 <div id="range">
@@ -275,7 +273,7 @@ new Vue({
   }
 });
 ```
-**Result:**
+**Результат:**
 <ul id="range" class="demo"><li v-repeat="val">Hi! {&#123;$index&#125;}</li></ul>
 <script>
 new Vue({
@@ -284,8 +282,8 @@ new Vue({
 });
 </script>
 
-## Array Filters
+## Фильтры Массивов
 
-Sometimes we only need to display a filtered or sorted version of the Array without actually mutating or resetting the original data. Vue provides two built-in filters to simplify such usage: `filterBy` and `orderBy`. Check out their [documentations](/api/filters.html#filterBy) for more details.
+Иногда требуется вывести отфильтрованный или отсортированный массив, не производя при этом изменений в оригинальном массиве. Vue предоставляет два встроенных фильтра для упрощения данной задачи: `filterBy` и `orderBy`. Смотрите [документацию](/api/filters.html#filterBy) для получения более подробной информации о них.
 
-Next up: [Listening for Events](/guide/events.html).
+Далее: [Обработка Событий](/guide/events.html).

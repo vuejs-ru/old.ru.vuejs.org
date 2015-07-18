@@ -2,9 +2,8 @@ title: TodoMVC
 type: examples
 order: 7
 ---
-
-> This is a fully spec-compliant TodoMVC implementation in under 120 effective lines of JavaScript (excluding comments and blank lines).
+> Это полностью соответствующий спецификации TodoMVC, список задач в 120 строк JavaScript кода (исключая комментарии и пустый строки).
 
 <iframe width="100%" height="500" src="todomvc/index.html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-> [[Source](https://github.com/yyx990803/vue/tree/master/examples/todomvc)]
+> [[Исходный код](https://github.com/yyx990803/vue/tree/master/examples/todomvc)]

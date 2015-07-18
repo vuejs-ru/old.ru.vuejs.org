@@ -1,13 +1,13 @@
-title: Handling Forms
+title: Управление Формами
 type: guide
 order: 7
 ---
 
-## The Basics
+## Основы
 
-You can use the `v-model` directive to create two-way data bindings on form input elements. It automatically picks the correct way to update the element based on the input type.
+Вы можете использовать директиву `v-model` для установления двусторонней привязки данных к полям формы. В зависимости от типа элемента, Vue автоматически выберет способ его обновления.
 
-**Example**
+**Пример**
 
 ``` html
 <form id="demo">
@@ -61,7 +61,7 @@ new Vue({
 })
 ```
 
-**Result**
+**Результат**
 
 <form id="demo"><p><input type="text" v-model="msg"> {&#123;msg&#125;}</p><p><input type="checkbox" v-model="checked"> {&#123;checked ? &quot;yes&quot; : &quot;no&quot;&#125;}</p><p><input type="radio" v-model="picked" name="picked" value="one"><input type="radio" v-model="picked" name="picked" value="two"> {&#123;picked&#125;}</p><p><select v-model="selected"><option>one</option><option>two</option></select> {&#123;selected&#125;}</p><p><select v-model="multiSelect" multiple><option>one</option><option>two</option><option>three</option></select>{&#123;multiSelect&#125;}</p><p>data:<pre style="font-size:13px;background:transparent;line-height:1.5em">{&#123;$data | json 2&#125;}</pre></p></form>
 <script>
@@ -77,34 +77,34 @@ new Vue({
 })
 </script>
 
-## Lazy Updates
+## Отложенное Обновление
 
-By default, `v-model` syncs the input with the data after each `input` event. You can add a `lazy` attribute to change the behavior to sync after `change` events:
+По умолчанию `v-model` синхронизирует поле ввода со свойством после каждого события `input`. Вы можете добавить атрибут `lazy` чтобы синхронизация происходила после события `change`:
 
 ``` html
 <!-- synced after "change" instead of "input" -->
 <input v-model="msg" lazy>
 ```
 
-## Casting Value as Number
+## Передача Значение в Качестве Числа
 
-If you want user input to be automatically persisted as numbers, you can add a `number` attribute to your `v-model` managed inputs:
+Если вам требуется чтобы значение поля ввода сохранялось как число, вы можете использовать атрибут `number`:
 
 ``` html
 <input v-model="age" number>
 ```
 
-## Dynamic Select Options
+## Динамические Значения для Select
 
-When you need to dynamically render a list of options for a `<select>` element, it's recommended to use an `options` attribute together with `v-model`:
+Когда вам требуется динамически выводить список опций для элемента `<select>`, рекомендуется использовать атрибут `options` совместно с `v-model`:
 
 ``` html
 <select v-model="selected" options="myOptions"></select>
 ```
 
-In your data, `myOptions` should be an keypath/expression that points to an Array to use as its options. The Array can contain plain strings, or contain objects.
+Значение поля, `myOptions` должно быть выражением, которое указывает на массив опций. Массив может содержать либо строки, либо объекты.
 
-The object can be in the format of `{text:'', value:''}`. This allows you to have the option text displayed differently from its underlying value:
+Объекты могут выглядеть следующим образом: `{text:'', value:''}`. Это позволяет разделить значение и выводимый текст:
 
 ``` js
 [
@@ -113,7 +113,7 @@ The object can be in the format of `{text:'', value:''}`. This allows you to hav
 ]
 ```
 
-Will render:
+Будет преобразовано в:
 
 ``` html
 <select>
@@ -122,7 +122,7 @@ Will render:
 </select>
 ```
 
-Alternatively, the object can be in the format of `{ label:'', options:[...] }`. In this case it will be rendered as an `<optgroup>`:
+Также объект может быть представлен как `{ label:'', options:[...] }`. В таком случае он будет выведен как `<optgroup>`:
 
 ``` js
 [
@@ -146,15 +146,15 @@ Will render:
 </select>
 ```
 
-## Input Debounce
+## Задержка Вывода
 
-The `debounce` param allows you to set a minimum delay after each keystroke before an update is executed. This can be useful when you are performing expensive operations on each update, for example making an Ajax request for type-ahead autocompletion.
+Атрибут `debounce` позволяет установить минимальную задержку, после каждого нажатия клавиши, до запуска процедуры обновления значения. Это может быть удобно, когда требуется произвести сложные вычисления при каждом обновлении, к примеру сделать Ajax запрос для организации автоматического дополнения:
 
 ``` html
 <input v-model="msg" debounce="500">
 ```
 
-**Result**
+**Результат**
 
 <div id="debounce-demo" class="demo">{&#123;msg&#125;}<br><input v-model="msg" debounce="500"></div>
 <script>
@@ -164,4 +164,4 @@ new Vue({
 })
 </script>
 
-Next: [Computed Properties](/guide/computed.html).
+Далее: [Вычисляемые Свойства](/guide/computed.html).
