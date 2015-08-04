@@ -48,11 +48,7 @@ Vue.js использует шаблонизацию основанную на D
 vm.$data // The Model
 ```
 
-<<<<<<< HEAD
-В Vue.Js, модели представляют собой обычные объекты JavaScript. Вы можете управлять их свойствами. Экземпляр Vue, который контролирует данный объект, будет информирован об этих изменениях. Для достижения подобного поведения Vue.js конвертирует свойства объектов в геттеры и сеттеры. В этом случае, не требуется "грязная" проверка изменений значений, и вам не нужно как-либо сообщать Vue о необходимости обновить Представление. Всякий раз, когда данные изменяются, Представление обновляется на следующем кадре.
-=======
-In Vue.js, models are simply plain JavaScript objects, or **data objects**. Once an object is used as data inside a Vue instance, it becomes **reactive**. You can manipulate their properties and Vue instances that are observing them will be notified of the changes. Vue.js achieves transparent reactivity by converting the properties on data objects into ES5 getter/setters. There's no need for dirty checking, nor do you have to explicitly signal Vue to update the View. Whenever the data changes, the View is updated on the next frame.
->>>>>>> upstream#master
+В Vue.Js, модели представляют собой обычные объекты JavaScript или **объекты данных**. Как только объект использован как данные в экемпляре Vue, он становится **реактивным**. Вы можете управлять их свойствами. Экземпляр Vue, который контролирует данный объект, будет информирован об этих изменениях. Для достижения подобного поведения Vue.js конвертирует свойства объектов в ES5 геттеры и сеттеры. В этом случае, не требуется "грязная" проверка изменений значений, и вам не нужно как-либо сообщать Vue о необходимости обновить Представление. Всякий раз, когда данные изменяются, Представление обновляется на следующем кадре.
 
 Экземпляры Vue проксируют все свойства объектов, за которыми наблюдают. Когда объект `{ a: 1 }` попадает под наблюдение экземпляра Vue `wm`, оба свойства `vm.$data.a` и `vm.a` возвращают одинаковое значение. Изменение `vm.a = 2` приведёт к изменению `vm.$data`.
 
@@ -60,15 +56,11 @@ In Vue.js, models are simply plain JavaScript objects, or **data objects**. Once
 
 Существует недостаток подобной организации работы с объектами. После инициализации Vue.js не имеет возможности обнаружить добавленные или удалённые свойства. Чтобы обойти данное ограничение, каждый объект, который находится под наблюдением, снабжается методами `$add`, `$set` и `$delete`.
 
-<<<<<<< HEAD
 ### Директивы
-=======
-Below is a high-level overview of how reactive updates are implemented in Vue.js:
+
+Высокоуровневый обзор реализации реактивного обновления в Vue.js:
 
 ![Data Observation](/images/data.png)
-
-### Directives
->>>>>>> upstream#master
 
 Снабжённые специальным префиксом атрибуты HTML, которые указывают Vue.js выполнить какие-либо действия с элементом DOM.
 
