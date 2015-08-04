@@ -1,39 +1,39 @@
-title: Filters
+title: Фильтры
 type: guide
 order: 4
 ---
 
-## Synopsis
+## Введение
 
-A Vue.js filter is essentially a function that takes a value, processes it, and then returns the processed value. In the markup it is denoted by a single pipe (`|`) and can be followed by one or more arguments:
+Фильтры Vue.js – это по сути функции, которые принимают значение, преобразовывают его, и затем возвращают в Представление. В разметке фильтры обозначаются с помощью вертикальной черты (`|`) и могут снабжаться одним или несколькими аргументами, которые указываются после неё:
 
 ``` html
 <element directive="expression | filterId [args...]"></element>
 ```
 
-## Examples
+## Примеры
 
-Filters must be placed at the end of a directive's value:
+Фильтры должны быть размещены после значения:
 
 ``` html
 <span v-text="message | capitalize"></span>
 ```
 
-You can also use them inside mustache-style bindings:
+Также вы можете использовать их с биндингами mustache:
 
 ``` html
 <span>{{message | uppercase}}</span>
 ```
 
-Multiple filters can be chained together:
+Можно использовать несколько фильтров одновременно:
 
 ``` html
 <span>{{message | lowercase | reverse}}</span>
 ```
 
-## Arguments
+## Аргументы
 
-Some filters can take optional arguments. Arguments are separated by spaces:
+Некоторые фильтры могут принимать аргументы. Они разделяются пробелами:
 
 ``` html
 <span>{{order | pluralize 'st' 'nd' 'rd' 'th'}}</span>
@@ -43,8 +43,8 @@ Some filters can take optional arguments. Arguments are separated by spaces:
 <input v-on="keyup: submitForm | key 'enter'">
 ```
 
-Plain string arguments need to be enclosed in quotes. Non-quoted arguments will be evaluated dynamically against the current data scope, and we will discuss them in more details later when we talk about custom filters.
+Если в качестве аргументов используются простые строчные значения, требуется заключить их в кавычки. Аргументы без кавычек, интерпретируются как выражения и будут вычисляться динамически. Мы обсудим это немного позже, когда будем говорить о пользовательских фильтрах.
 
-For their specific use of the above examples see the [full list of built-in filters](/api/filters.html).
+Для детальной информации о фильтрах смотрите [полный список встроенных фильтров](/api/filters.html).
 
-Now that you know what directives and filters are, let's get our hands dirty and try to [display a list of items](/guide/list.html).
+Теперь, когда вы знаете, что такое директивы и фильтры, давайте попробуем [вывести список элементов](/guide/list.html).

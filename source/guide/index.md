@@ -4,110 +4,109 @@ order: 2
 ---
 
 ## Вступление
+Vue.js – это библиотека для построения интерактивных веб-интерфейсов.
 
-Vue.js - библиотеке для построения интерактивных веб интерфейсов.
+Технически Vue.js фокусируется на слое [Модель Представления](#ViewModel) (ViewModel) паттерна MVVM. Данный слой объединяет [Представление](#View) и [Модель](#Model) с помощью двусторонней привязки данных. Манипуляции с DOM абстрагируются при помощи [Директив](#Directives) и [Фильтров](#Filters).
 
-Технически, Vue.js фокусируется только на [ViewModel](#ViewModel) слое MVVM паттерна. Она соединяет [View](#View) и [Model](#Model) посредством two way data bindings (*Прим.переводчика: здесь и далее специфические устоявшиеся термины оставлены в англ. оригинале*). Actual DOM manipulations and output formatting are abstracted away into [Directives](#Directives) and [Filters](#Filters).
+Целью библиотеки является предоставление всех преимуществ реактивной привязки данных в совокупности с компонуемыми компонентами представления и максимально простым API. Это не огромный фреймворк – Vue.js спроектирован чтобы быть максимально простым слоем представления. Вы можете использовать его отдельно для быстрого прототипирования или совмещать с другими библиотеками, для создания собственного стека разработки. Также он идеально подходит для сервисов заменяющих бэкенд, таких как Firebase.
 
-Philosophically, the goal is to provide the benefits of reactive data binding and composable view components with an API that is as simple as possible. It is not a full-blown framework - it is designed to be a view layer that is simple and flexible. You can use it alone for rapid prototyping, or mix and match with other libraries for a custom front-end stack. It's also a natural fit for no-backend services such as Firebase.
+На API Vue.js в значительной степени повлияли [AngularJS], [KnockoutJS], [Ractive.js] и [Rivets.js]. Несмотря на сходства, я считаю, что Vue.js предоставляет хорошую альтернативу существующим библиотекам, путём нахождения золотой середины между простотой и функциональностью.
 
-Vue.js' API is heavily influenced by [AngularJS], [KnockoutJS], [Ractive.js] and [Rivets.js]. Despite the similarities, I believe Vue.js offers a valuable alternative to these existing libraries by finding a sweetspot between simplicity and functionality.
+Даже если вы уже встречались с некоторыми из следующих терминов, рекомендуется ознакомиться с их определениями, так как их значение может различаться в контексте Vue.js.
 
-Even if you are already familiar with some of these terms, it is recommended that you go through the following concepts overview because your notion of these terms might be different from what they mean in the Vue.js context.
+## Основные понятия
 
-## Concepts Overview
+### Модель Представления
 
-### ViewModel
-
-An object that syncs the Model and the View. In Vue.js, every Vue instance is a ViewModel. They are instantiated with the `Vue` constructor or its sub-classes:
+Объект который производит синхронизацию между Моделью и Представлением. В Vue.js каждый экземпляр является Моделью Представления. Экземпляры создаются с помощью конструктора `Vue` или его подклассов:
 
 ```js
 var vm = new Vue({ /* options */ })
 ```
 
-This is the primary object that you will be interacting with as a developer when using Vue.js. For more details see [The Vue Constructor](/api/).
+Это основной объект с которым вы будете осуществлять взаимодействие при разработки на Vue.js. Подробная документация доступна в разделе [Конструктор Vue](/api/).
 
-### View
+### Представление
 
-The actual DOM that is managed by Vue instances.
+DOM, которым управляет экземпляр Vue.
 
 ```js
 vm.$el // The View
 ```
 
-Vue.js uses DOM-based templating. Each Vue instance is associated with a corresponding DOM element. When a Vue instance is created, it recursively walks all child nodes of its root element while setting up the necessary data bindings. After the View is compiled, it becomes reactive to data changes.
+Vue.js использует шаблонизацию основанную на DOM. Каждый экземпляр Vue привязан к соответствующему DOM элементу. При создании экземпляра Vue, происходит рекурсивный обход всех дочерних узлов корневого элемента, и устанавливаются требуемые связи между данными и представлением. После того, как Представление было скомпилировано, оно начинает реагировать на изменение данных.
 
-When using Vue.js, you rarely have to touch the DOM yourself except in custom directives (explained later). View updates will be automatically triggered when the data changes. These view updates are highly granular with the precision down to a textNode. They are also batched and executed asynchronously for greater performance.
+При использовании Vue.js, вам редко потребуется работать с DOM напрямую, исключая пользовательские директивы (см. далее). При изменении данных, будет автоматически запущенно обновление представления. Обновление затрагивает только конечные узлы с текстом. Также обновления группируются и выполняются асинхронно для увеличения производительности.
 
-### Model
+### Модель
 
-A slightly modified plain JavaScript object.
+Слегка изменённые объекты JavaScript.
 
 ```js
 vm.$data // The Model
 ```
 
-In Vue.js, models are simply plain JavaScript objects, or **data objects**. You can manipulate their properties and Vue instances that are observing them will be notified of the changes. Vue.js achieves transparent reactivity by converting the properties on data objects into ES5 getter/setters. There's no need for dirty checking, nor do you have to explicitly signal Vue to update the View. Whenever the data changes, the View is updated on the next frame.
+В Vue.Js, модели представляют собой обычные объекты JavaScript. Вы можете управлять их свойствами. Экземпляр Vue, который контролирует данный объект, будет информирован об этих изменениях. Для достижения подобного поведения Vue.js конвертирует свойства объектов в геттеры и сеттеры. В этом случае, не требуется "грязная" проверка изменений значений, и вам не нужно как-либо сообщать Vue о необходимости обновить Представление. Всякий раз, когда данные изменяются, Представление обновляется на следующем кадре.
 
-Vue instances proxy all properties on data objects they observe. So once an object `{ a: 1 }` has been observed, both `vm.$data.a` and `vm.a` will return the same value, and setting `vm.a = 2` will modify `vm.$data`.
+Экземпляры Vue проксируют все свойства объектов, за которыми наблюдают. Когда объект `{ a: 1 }` попадает под наблюдение экземпляра Vue `wm`, оба свойства `vm.$data.a` и `vm.a` возвращают одинаковое значение. Изменение `vm.a = 2` приведёт к изменению `vm.$data`.
 
-The data objects are mutated in place, so modifying it by reference has the same effects as modifying `vm.$data`. This makes it possible for multiple Vue instances to observe the same piece of data. In larger applications it is also recommended to treat Vue instances as pure views, and externalize the data manipulation logic into a more discrete store layer.
+Объекты изменяются на месте. Так изменение объекта по ссылке будет иметь тот же результат, что и изменение `vm.$data`. Это позволяет устанавливать наблюдение за одними и теми же данными из разных экземпляров Vue. В больших приложениях рекомендуется рассматривать экземпляры Vue, как простое описание Представления, и отделять логику, оперирующую с данными в отдельный дискретный слой.
 
-One caveat here is that once the observation has been initiated, Vue.js will not be able to detect newly added or deleted properties. To get around that, observed objects are augmented with `$add`, `$set` and `$delete` methods.
+Существует недостаток подобной организации работы с объектами. После инициализации Vue.js не имеет возможности обнаружить добавленные или удалённые свойства. Чтобы обойти данное ограничение, каждый объект, который находится под наблюдением, снабжается методами `$add`, `$set` и `$delete`.
 
-### Directives
+### Директивы
 
-Prefixed HTML attributes that tell Vue.js to do something about a DOM element.
+Снабжённые специальным префиксом атрибуты HTML, которые указывают Vue.js выполнить какие-либо действия с элементом DOM.
 
 ```html
 <div v-text="message"></div>
 ```
 
-Here the div element has a `v-text` directive with the value `message`. This tells Vue.js to keep the div's textContent in sync with the Vue instance's `message` property.
+В данном случае элемент div содержит директиву `v-text`, значение которой `message`. Это указывает Vue.js, что требуется синхронизировать текст внутри тега div со свойством `message` экземпляра Vue.
 
-Directives can encapsulate arbitrary DOM manipulations. For example `v-attr` manipulates an element's attributes, `v-repeat` clones an element based on an Array, `v-on` attaches event listeners... we will cover them later.
+Директивы могут инкапсулировать различные действия с DOM. Например директива `v-attr` управляет атрибутами элемента, `v-repeat` клонирует элемент, в соответствии со значениями массива, `v-on` прикрепляет обработчики собитий... мы подробно остановимся на директивах позже.
 
-### Mustache Bindings
+### Биндинги Mustache 
 
-You can also use mustache-style bindings, both in text and in attributes. They are translated into `v-text` and `v-attr` directives under the hood. For example:
+Вы можете также использовать биндинги в стиле mustache, для текста и атрибутов элементов. Они будут транслированы в `v-text` и `v-attr` директивы. К примеру:
 
 ```html
 <div id="person-{{id}}">Hello {{name}}!</div>
 ```
 
-Although it is convenient, there are a few things you need to be aware of:
+Несмотря на то, что это достаточно удобно, есть несколько вещей, которые вы должны знать:
 
-<p class="tip">The `src` attribute on an `<image>` element makes an HTTP request when a value is set, so when the template is first parsed it will result in a 404. In this case `v-attr` is preferred.</p>
+<p class="tip">Атрибут `src` элемента `<image>` создаёт HTTP запрос, при наличии значения. В этом случае результатом запроса будет ошибка 404, так как запрос отправится до компиляции экземпляра Vue. Для данного атрибута желательно использовать `v-attr`.</p>
 
-<p class="tip">Internet Explorer will remove invalid inline `style` attributes when parsing HTML, so always use `v-style` when binding inline CSS if you want to support IE.</p>
+<p class="tip">Internet Explorer удаляет некорректные атрибуты `style` при разборе HTML, всегда используйте `v-style` при использовании данного атрибута если необходимо поддерживать IE.</p>
 
-You can use triple mustaches for unescaped HTML, which translates to `v-html` internally:
+Вы можете использовать тройные фигурные скобки для вывода HTML. В данном случае будет использована директива `v-html`:
 
 ``` html
 {{{ safeHTMLString }}}
 ```
 
-However, this can open up windows for potential XSS attacks, therefore it is suggested that you only use triple mustaches when you are absolutely sure about the security of the data source, or pipe it through a custom filter that sanitizes untrusted HTML.
+Тем не менее, это может открыть двери для потенциальных XSS атак, поэтому предполагается, что вы используйте их, только когда абсолютно уверены, что контент безопасен, или передаёте его через фильтр, который уберёт ненадёжный HTML.
 
-Finally, you can add `*` to your mustache bindings to indicate a one-time only interpolation, which does not react to data changes:
+Наконец, вы можете добавить `*` к биндингам, чтобы выполнить интерпретацию один раз, и не реагировать на изменение данных:
 
 ``` html
 {{* onlyOnce }}
 ```
 
-### Filters
+### Фильтры
 
-Filters are functions used to process the raw values before updating the View. They are denoted by a "pipe" inside directives or bindings:
+Фильтры представляют собой функции, которые используются для обработки сырых данных до обновления Представления. Они обозначаются вертикальной чертой ("|") в директивах или биндингах:
 
 ```html
 <div>{{message | capitalize}}</div>
 ```
 
-Now before the div's textContent is updated, the `message` value will first be passed through the `capitalize` function. For more details see [Filters in Depth](/guide/filters.html).
+Теперь, перед тем как внутри элемента div обновится текст, значение `message` будет сначала пропущенно через функцию `capitalize`. Более подробно об этом можно прочитать в разделе [Фильтры в деталях](/guide/filters.html).
 
-### Components
+### Компоненты
 
-In Vue.js, every component is simply a Vue instance. Components form a nested tree-like hierarchy that represents your application interface. They can be instantiated by a custom constructor returned from `Vue.extend`, but a more declarative approach is registering them with `Vue.component(id, constructor)`. Once registered, they can be declaratively nested in other Vue instance's templates in the form of custom elements:
+В Vue.js, каждый компонент является экземпляром Vue. Компоненты образуют вложенную древовидную иерархию, описывающую интерфейс вашего приложения. Они могут быть созданы с помощью конструктора, который возвращает метод `Vue.extend`, но более декларативным подходом является регистрация их с помощью метода `Vue.component(id, constructor)`. После регистрации, они доступны в шаблонах, в виде пользовательских элементов:
 
 ``` html
 <my-component>
@@ -115,9 +114,9 @@ In Vue.js, every component is simply a Vue instance. Components form a nested tr
 </my-component>
 ```
 
-This simple mechanism enables declarative reuse and composition of Vue instances in a fashion similar to [Web Components](http://www.w3.org/TR/components-intro/), without the need for latest browsers or heavy polyfills. By breaking an application into smaller components, the result is a highly decoupled and maintainable codebase. For more details, see [Component System](/guide/components.html).
+Этот простой механизм позволяет переиспользовать и совмещать экземпляры Vue подобно [Веб Компонентам](http://www.w3.org/TR/components-intro/), без жёстких ограничений на версию браузера или огромных полифилов. В результате разделения приложения на небольшие компоненты получается хорошо структурированный и легко поддерживаемый код. Больше деталей о реализации компонентов вы можете найти в разделе [Система Компонентов](/guide/components.html).
 
-## A Quick Example
+## Небольшой пример
 
 ``` html
 <div id="demo">
@@ -174,13 +173,13 @@ var demo = new Vue({
 })
 </script>
 
-Also available on [jsfiddle](http://jsfiddle.net/yyx990803/yMv7y/).
+Также доступен на [jsfiddle](http://jsfiddle.net/yyx990803/yMv7y/).
 
-You can click on a todo to toggle it, or you can open your Browser's console and play with the `demo` object - for example, change `demo.title`, push a new object into `demo.todos`, or toggle a todo's `done` state.
+Вы можете кликнуть на задачу чтобы переключить статус, или открыть консоль разработчика и поиграть с объектом `demo` – для примера, изменить `demo.title` добавить новый элемент в `demo.todos` или переключить статус задачи `done`.
 
-You probably have a few questions in mind now - don't worry, we'll cover them soon. 
+Вероятно, у вас остались некоторые вопросы – не беспокойтесь, мы рассмотрим их в ближайшее время.
 
-Next up: [Directives in Depth](/guide/directives.html).
+Далее: [Директивы в деталях](/guide/directives.html).
 
 [AngularJS]: http://angularjs.org
 [KnockoutJS]: http://knockoutjs.com
