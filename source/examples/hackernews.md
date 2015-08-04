@@ -1,6 +1,6 @@
 title: Клон HackerNews
 type: examples
-order: 8
+order: 9
 ---
 > Это клон HackerNews созданный с помощью Webpack + vue-loade, и использующий официальный HackerNews Firebase API.
 

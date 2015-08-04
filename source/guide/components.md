@@ -209,9 +209,9 @@ The two-way binding will sync the change of child's `msg` property back to the p
 
 <p class="tip">Note that if the prop being passed down is an Object or an Array, it is passed by reference. Mutating the Object or Array itself inside the child will affect parent state, regardless of the binding type you are using.</p>
 
-### Prop Validation
+### Prop Specification
 
-It is possible for a component to validate the props it is receiving. This is useful when you are authoring a component that is intended to be used by others, as these prop validation requirements essentially constitute your component's API, and ensure your users are using your component correctly. Instead of defining the props as strings, you can use Objects that contain validation requirements:
+It is possible for a component to specify the requirements for the props it is receiving. This is useful when you are authoring a component that is intended to be used by others, as these prop validation requirements essentially constitute your component's API, and ensure your users are using your component correctly. Instead of defining the props as strings, you can use Objects that contain validation requirements:
 
 ``` js
 Vue.component('example', {
@@ -227,6 +227,19 @@ Vue.component('example', {
     propWithDefault: {
       type: Number,
       default: 100
+    },
+    // object/array defaults should be returned from a
+    // factory function
+    propWithObjectDefault: {
+      type: Object,
+      default: function () {
+        return { msg: 'hello' }
+      }
+    },
+    // a two-way prop. will throw warning if binding type
+    // does not match.
+    twoWayProp: {
+      twoWay: true
     },
     // custom validator function
     greaterThanTen: {
@@ -250,8 +263,6 @@ The `type` can be one of the following native constructors:
 In addition, `type` can also be a custom constructor function and the the assertion will be made with an `instanceof` check.
 
 When a prop validation fails, Vue will refuse the set the value on the child component, and throw a warning if using the development build.
-
-You can still use strings if your props don't need any validation, and you can mix string and object props in the option array.
 
 ### Inheriting Parent Scope
 
@@ -461,14 +472,14 @@ var parent2 = new Vue({
 })
 </script>
 
-### Repeat Component with Identifier
+### Repeat Component with alias
 
-The identifier syntax also works when using a component, and the repeated data will be set as a property on the component using the identifier as the key:
+The alias syntax also works when using a component, and the repeated data will be set as a property on the component using the alias as the key:
 
 ``` html
 <ul id="list-example">
   <!-- data available inside component as `this.user` -->
-  <user-profile v-repeat="user:users"></user-profile>
+  <user-profile v-repeat="user in users"></user-profile>
 </ul>
 ```
 
@@ -536,7 +547,7 @@ var parent = new Vue({
 
 ## Private Assets
 
-Sometimes a component needs to use assets such as directives, filters and its own child components, but might want to keep these assets encapsulated so the component itself can be reused elsewhere. You can do that using the private assets instantiation options. Private assets will only be accessible by the instances of the owner component and its child components.
+Sometimes a component needs to use assets such as directives, filters and its own child components, but might want to keep these assets encapsulated so the component itself can be reused elsewhere. You can do that using the private assets instantiation options. Private assets will only be accessible by the instances of the owner component, components that inherit from it, and its child components in the view hierarchy.
 
 ``` js
 // All 5 types of assets
@@ -562,6 +573,8 @@ var MyComponent = Vue.extend({
 })
 ```
 
+<p class="tip">You can prohibit child components from accessing a parent component's private assets by setting `Vue.config.strict = true`.</p>
+
 Alternatively, you can add private assets to an existing Component constructor using a chaining API similar to the global asset registration methods:
 
 ``` js
@@ -570,6 +583,40 @@ MyComponent
   .filter('...', function () {})
   .component('...', {})
   // ...
+```
+
+### Asset Naming Convention
+
+Some assets, such as components and directives, appear in templates in the form of HTML attributes or HTML custom tags. Since HTML attribute names and tag names are **case-insensitive**, we often need to name our assets using dash-case instead of camelCase. **Starting in 0.12.9**, it is now supported to name your assets using camelCase, and use them in templates with dash-case.
+
+**Example**
+
+``` js
+// in a component definition
+components: {
+  // register using camelCase
+  myComponent: { /*... */ }
+}
+```
+
+``` html
+<!-- use dash case in templates -->
+<my-component></my-component>
+```
+
+This works nicely with [ES6 object literal shorthand](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_6):
+
+``` js
+import compA from './components/a';
+import compB from './components/b';
+
+export default {
+  components: {
+    // use in templates as <comp-a> and <comp-b>
+    compA,
+    compB
+  }
+}
 ```
 
 ## Content Insertion

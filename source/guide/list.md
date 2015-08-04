@@ -44,9 +44,15 @@ var demo = new Vue({
 })
 </script>
 
+<<<<<<< HEAD
 ## Использование с Блоками
 
 Иногда может потребоваться вывести несколько узлов – в этом случае, вы можете использовать тег `<template>`, и обернуть в него нужный блок. Тег `<template>` в данном случае служит для семантической обёртки блока. Например:
+=======
+## Fragment Repeat
+
+Sometimes you might want to repeat a fragment of more than one nodes - in that case, you can use a `<template>` tag to wrap the repeat fragment. The `<template>` tag here merely serves as a semantic wrapper. For example:
+>>>>>>> upstream#master
 
 ``` html
 <ul>
@@ -89,14 +95,19 @@ new Vue({
 })
 </script>
 
+<<<<<<< HEAD
 ## Использование Идентификатора
 
 Иногда требуется получить явный доступ к переменной вместо использования родительского контекста. Вы можете добиться подобного поведения, предоставив идентификатор текущего элемента в качестве аргумента директивы `v-repeat` следующим образом:
+=======
+## Using an alias
+
+Sometimes we might want to have more explicit variable access instead of implicitly falling back to parent scope. You can do that by providing an alias to the `v-repeat` directive and use it as the alias for the item being iterated:
+>>>>>>> upstream#master
 
 ``` html
 <ul id="users">
-  <!-- think of this as "for each user in users" -->
-  <li v-repeat="user: users">
+  <li v-repeat="user in users">
     {{user.name}} - {{user.email}}
   </li>
 </ul>
@@ -128,7 +139,13 @@ new Vue({
 })
 </script>
 
+<<<<<<< HEAD
 <p class="tip">Использование идентификатора вместе с `v-repeat` положительно влияет на читабельность шаблонов и производительность.</p>
+=======
+<p class="tip">The `user in users` syntax is only available in Vue 0.12.8 and above. For older versions, you must use the `user : users` syntax.</p>
+
+<p class="tip">Using an alias with `v-repeat` in general results in more readable templates and slightly better performance.</p>
+>>>>>>> upstream#master
 
 ## Модифицирующие методы
 

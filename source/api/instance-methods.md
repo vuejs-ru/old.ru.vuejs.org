@@ -78,7 +78,7 @@ Set a data value on the Vue instance given a valid keypath. If the path doesn't 
 - **keypath** `String`
 - **value** `*`
 
-Add a root level property to the Vue instance (and also its `$data`). Due to the limitations of ES5, Vue cannot detect properties directly added to or deleted from an Object, so use this method and `vm.$delete` when you need to do so. Additionally, all observed objects are augmented with these two methods too.
+Add a root level property to the Vue instance (and also its `$data`). Due to the limitations of ES5, Vue cannot detect properties directly added to or deleted from an Object, so use this method and `vm.$delete` when you need to do so. Make sure to use this only when necessary, because this method forces a dirty check of all watchers in the current vm.
 
 ### vm.$delete( keypath )
 
@@ -210,13 +210,13 @@ Defer the callback to be executed after the next DOM update cycle. Use it immedi
 
 If the Vue instance didn't get an `el` option at instantiation, you can manually call `$mount(el)` to start the compilation phase. By default, the mounted element will be replaced by the instance's template. When the `replace` option is set to `false`, the template will be inserted into the mounted element and overwrite any existing inner content, unless the template contains `<content>` outlets.
 
-If no argument is provided, the template will be created as an out-of-document element, and you will have to use other DOM instance mathods to insert it into the document yourself. If `replace` option is set to `false`, then an empty `<div>` will be automatically created as the wrapper element. Calling `$mount()` on an already mounted instance will have no effect. The method returns the instance itself so you can chain other instance methods after it.
+If no argument is provided, the template will be created as an out-of-document element, and you will have to use other DOM instance methods to insert it into the document yourself. If `replace` option is set to `false`, then an empty `<div>` will be automatically created as the wrapper element. Calling `$mount()` on an already mounted instance will have no effect. The method returns the instance itself so you can chain other instance methods after it.
 
 ### vm.$destroy( [remove] )
 
-- **remove** `Boolean` *optional*
+- **remove** `Boolean` *optional* (Default: `false`)
 
-Completely destroy a vm. Clean up its connections with other existing vms, unbind all its directives and remove its `$el` from the DOM. Also, all `$on` and `$watch` listeners will be automatically removed.
+Completely destroy a vm. Clean up its connections with other existing vms, unbind all its directives and optionally remove its `$el` from the DOM. Also, all `$on` and `$watch` listeners will be automatically removed.
 
 ### vm.$compile( element )
 

@@ -15,11 +15,11 @@ Webpack and Browserify are more than just module bundlers, though. They both pro
 
 In a typical Vue.js project we will be breaking up our code into many small components, and it would be nice to have each component encapsulate its CSS styles, template and JavaScript definition in the same place. As mentioned above, when using Webpack or Browserify, with proper source transforms we can write our components like this:
 
-<img src="/images/vueify.png">
+<img src="/images/vue-component.png">
 
 If you are into pre-processors, you can even do this:
 
-<img src="/images/vueify_with_pre.png">
+<img src="/images/vue-component-with-pre-processors.png">
 
 You can build these single-file Vue components with Webpack + [vue-loader](https://github.com/vuejs/vue-loader) or Browserify + [vueify](https://github.com/vuejs/vueify). It is recommended to use the Webpack setup because Webpack's loader API enables better file dependency tracking and caching if you are using pre-processors.
 
@@ -115,6 +115,45 @@ describe('my-component', function () {
 ```
 
 <p class="tip">Since Vue.js directives react to data updates asynchronously, when you are asserting DOM state after changing the data, you will have to do so in a `Vue.nextTick` callback.</p>
+
+## Deploying for Production
+
+The minified standalone build of Vue.js has already stripped out all the warnings for you for a smaller file size, but when you are using tools like Browserify or Webpack to build Vue.js applications, it's not so obvious how to do that.
+
+Starting in 0.12.8, it is quite simple to configure the tools to strip out the warnings:
+
+### Webpack
+
+Use Webpack's [DefinePlugin](http://webpack.github.io/docs/list-of-plugins.html#defineplugin) to indicate a production environment, so that warning blocks can be automatically dropped by UglifyJS during minification. Example config:
+
+``` js
+var webpack = require('webpack')
+
+module.exports = {
+  // ...
+  plugins: [
+    // ...
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ]
+}
+```
+
+### Browserify
+
+Just run your bundling command with `NODE_ENV` set to `"production"`. Vue automatically applies [envify](https://github.com/hughsk/envify) transform to itself and makes warning blocks unreachable. For example:
+
+``` bash
+NODE_ENV=production browserify -e main.js | uglifyjs -c -m > build.js
+```
 
 ## An Example
 
