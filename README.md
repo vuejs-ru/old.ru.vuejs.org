@@ -1,8 +1,12 @@
 # vuejs.org
 
-Это перевод документации [Vue.js](http://vuejs.org) на русский язык.
+Перевод документации [Vue.js](http://vuejs.org) на русский язык.
 
-Для сборки данного сайта используется [hexo](http://hexo.io/). Статьи в Markdown хранятся в папке `source`. Оставляйте правки и улучшения в качестве пулл-реквестов.
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/vuejs-ru/vuejs.org?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
+Для сборки данного сайта используется [hexo](http://hexo.io/).  
+Статьи в Markdown хранятся в папке `source`.   
+Оставляйте правки и улучшения в качестве пулл-реквестов.
 
 ## Разработка
 
