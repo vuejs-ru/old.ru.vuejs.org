@@ -19,7 +19,7 @@ order: 4
 <span v-text="message | capitalize"></span>
 ```
 
-Также вы можете использовать их с биндингами mustache:
+Также вы можете использовать их шаблонных mustache тегах:
 
 ``` html
 <span>{{message | uppercase}}</span>
