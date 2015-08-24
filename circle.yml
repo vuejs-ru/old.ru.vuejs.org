@@ -20,7 +20,7 @@ general:
   branches:
     only:
       - lang-ru
-   ignore:
+    ignore:
       - gh-pages
 notify:
   webhooks:
