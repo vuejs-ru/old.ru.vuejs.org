@@ -15,13 +15,12 @@ deployment:
       - rm -rf db.json
       - ./node_modules/.bin/hexo generate
       - cp -R ./todomvc public/examples
+      - cp ./circle.yml public/circle.yml
       - ./node_modules/.bin/hexo deploy
 general:
   branches:
     only:
       - lang-ru
-    ignore:
-      - gh-pages
 notify:
   webhooks:
     # A list of hook hashes, containing the url field
