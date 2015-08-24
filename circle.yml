@@ -5,7 +5,7 @@ machine:
     version: 0.12.2
 deployment:
   production:
-    branch: lang-ja
+    branch: lang-ru
     commands:
       - git config --global user.name "Circle CI"
       - git config --global user.email "kyzminov@gmail.com"
