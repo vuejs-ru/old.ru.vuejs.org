@@ -19,3 +19,6 @@ update:
 	cp ../vue/dist/vue.min.js themes/vue/source/js/vue.min.js
 	cp ../vue/dist/vue.js themes/vue/source/js/vue.js
 	node update.js
+    
+test:
+	@echo 'ignore tests for CircleCI' >/dev/null 2>&1
