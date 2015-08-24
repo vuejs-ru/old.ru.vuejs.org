@@ -20,6 +20,8 @@ general:
   branches:
     only:
       - lang-ru
+   ignore:
+      - gh-pages
 notify:
   webhooks:
     # A list of hook hashes, containing the url field
