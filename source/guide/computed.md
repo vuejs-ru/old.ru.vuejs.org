@@ -1,11 +1,11 @@
-title: Computed Properties
+title: Вычисляемые свойства
 type: guide
 order: 8
 ---
 
-Vue.js' inline expressions are very convenient, but the best use cases for them are simple boolean operations or string concatenations. For more complicated logic, you should use **computed properties**.
+Встроенные выражения в Vue.js очень удобны, но наилучшее применение для них - простые логические операции или объединение строк. Для более сложной логики необходимо использовать **вычисляемые свойства**.
 
-In Vue.js, you define computed properties with the `computed` option:
+В Vue.js вычисляемые свойства опеределяются в секции `computed`:
 
 ``` js
 var demo = new Vue({
@@ -15,11 +15,11 @@ var demo = new Vue({
   },
   computed: {
     fullName: {
-      // the getter should return the desired value
+      // геттер должен возвращать желаемое значение
       get: function () {
         return this.firstName + ' ' + this.lastName
       },
-      // the setter is optional
+      // сеттер необязательный
       set: function (newValue) {
         var names = newValue.split(' ')
         this.firstName = names[0]
@@ -32,7 +32,7 @@ var demo = new Vue({
 demo.fullName // 'Foo Bar'
 ```
 
-When you only need the getter, you can provide a single function instead of an object:
+Когда необходим только геттер можно указать просто функцию, вместо объекта:
 
 ``` js
 // ...
@@ -44,8 +44,8 @@ computed: {
 // ...
 ```
 
-A computed property is essentially a property defined with getter/setter functions. You can use a computed property just like a normal property, but when you access it, you get the value returned by the getter function; when you change its value, you trigger the setter function passing in the new value as its argument.
+Вычисляемое свойство - это, по существу, свойство, определённое фунуциями геттером и сеттером. Можно использовать вычисляемое свойство как обычное свойство объекта, но после обращения к нему вы получите результат функции геттера; когда вы меняете его значение, вы вызываете функцию сеттер, передавая новое значение как аргумент.
 
-Before 0.12.8, computed properties behave just like getters - every time you access it, the getter function is re-evaluated. In 0.12.8 this has been improved - computed properties are cached and lazily re-evaluated only when necessary.
+До версии 0.12.8, вычисляемые свойства работали лишь как геттеры - функция геттер исполнялась при каждом обращении. В версии 0.12.8 вычисляемые свойства автоматически кешируются и "лениво пересчитываются" только в случае необходимости.
 
-Next, let's learn about how to [write a custom directive](/guide/custom-directive.html).
+Далее, давайте разберёмся как [написать пользовательскую директиву](/guide/custom-directive.html).
