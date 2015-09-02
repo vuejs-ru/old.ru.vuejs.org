@@ -1,11 +1,10 @@
 title: Установка
 type: guide
 order: 1
-vue_version: 0.12.10
-dev_size: "229.79"
-min_size: "69.55"
-gz_size: "22.71"
-
+vue_version: 0.12.12
+dev_size: "232.67"
+min_size: "70.38"
+gz_size: "22.94"
 ---
 
 > **Примечание:** Vue.js не поддерживает IE8 и ниже.

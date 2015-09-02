@@ -62,7 +62,7 @@ JSON.stringify() incoming value rather than outputting the string representation
 
 ### key
 
-- this filter only works in `v-on`
+- this filter only works with `v-on`
 - this filter takes exactly one argument
 
 Wrap the handler so it only gets called when the keyCode matches the argument. You can also use string aliases for a few commonly-used keys:
@@ -84,14 +84,20 @@ Wrap the handler so it only gets called when the keyCode matches the argument. Y
 
 `doSomething` will only be called when the Enter key is pressed.
 
+### debounce
+
+- this filter only works with `v-on`
+- this filter takes one optional argument
+
+Wrap the handler to debounce it for X milliseconds, where X is the argument. Default is 300ms. A debounced handler will be delayed until at least X ms has passed after the call moment; if the handler is called again before the delay period, the delay poriod is reset to X ms.
+
 ### filterBy
 
-**Syntax:** `filterBy searchKey [in dataKey]`.
+**Syntax:** `filterBy searchKey [in dataKey...]`.
 
-- this filter only works in `v-repeat`
-- this is a computed filter
+- this filter only works for Array values
 
-Make `v-repeat` only display a filtered version of the source Array. The `searchKey` argument is a property key on the context ViewModel. The value of that property will be used as the string to search for:
+Return a filtered version of the source Array. The `searchKey` argument is a property key on the context ViewModel. The value of that property will be used as the string to search for:
 
 ``` html
 <input v-model="searchText">
@@ -107,32 +113,44 @@ Optionally, you can narrow down which specific property to search in with the op
 ``` html
 <input v-model="searchText">
 <ul>
-  <li v-repeat="users | filterBy searchText in name">{{name}}</li>
+  <li v-repeat="user in users | filterBy searchText in 'name'">{{name}}</li>
 </ul>
 ```
 
-Now the item will only match if the value of `searchText` is found in its `name` property. So `searchText` with value `'555'` will no longer match this item, but `'Jack'` will.
+Now the item will only match if the value of `searchText` is found in its `name` property. Note here we need to quote `name` to indicate it's a literal string argument. With this limitation, `searchText` with value `'555'` will no longer match this item, but `'Jack'` will.
 
-Finally, you can use quotes to indicate literal arguments:
+> New in 0.12.11
+
+Starting in 0.12.11 you can pass in multiple data keys:
 
 ``` html
-<ul>
-  <li v-repeat="users | filterBy '555' in 'phone'">{{name}}</li>
-</ul>
+<li v-repeat="user in uers | filterBy searchText in 'name' 'phone'"></li>
+```
+
+Or pass in a dynamic argument with an Array value:
+
+``` html
+<!-- fields = ['fieldA', 'fieldB'] -->
+<div v-repeat="user in users | filterBy searchText in fields">
+```
+
+Or, just pass in a custom filter function:
+
+``` html
+<div v-repeat="user in users | filterBy myCustomFilterFunction">
 ```
 
 ### orderBy
 
 **Syntax:** `orderBy sortKey [reverseKey]`.
 
-- this filter only works in `v-repeat`
-- this is a computed filter
+- this filter only works for Array values
 
-Sort `v-repeat`'s displayed result. The `sortKey` argument is a property key on the context ViewModel. The value of that property will be used as the key to sort the Array items with. The optional `reverseKey` argument is also a property key on the context ViewModel, but the value's truthiness will determine whether the result should be reversed.
+Return a sorted version of the source Array. The `sortKey` argument is a property key on the context ViewModel. The value of that property will be used as the key to sort the Array items with. The optional `reverseKey` argument is also a property key on the context ViewModel, but the value's truthiness will determine whether the result should be reversed.
 
 ``` html
 <ul>
-  <li v-repeat="users | orderBy field reverse">{{name}}</li>
+  <li v-repeat="user in users | orderBy field reverse">{{name}}</li>
 </ul>
 ```
 
@@ -150,6 +168,6 @@ You can also use quotes for literal sort key. To indicate a literal reverse, use
 
 ``` html
 <ul>
-  <li v-repeat="users | orderBy 'name' -1">{{name}}</li>
+  <li v-repeat="user in users | orderBy 'name' -1">{{name}}</li>
 </ul>
 ```
