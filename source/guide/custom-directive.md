@@ -1,9 +1,9 @@
-title: Custom Directives
+title: Пользовательские директивы
 type: guide
 order: 9
 ---
 
-## The Basics
+## Основы
 
 Vue.js allows you to register custom directives, essentially enabling you to teach Vue new tricks on how to map data changes to DOM behavior. You can register a global custom directive with the `Vue.directive(id, definition)` method, passing in a **directive id** followed by a **definition object**. A definition object can provide several hook functions (all optional):
 
