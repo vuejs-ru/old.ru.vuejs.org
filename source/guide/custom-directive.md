@@ -11,7 +11,7 @@ Vue.js allows you to register custom directives, essentially enabling you to tea
 - **update**: called for the first time immediately after `bind` with the initial value, then again whenever the binding value changes. The new value and the previous value are provided as the argument.
 - **unbind**: called only once, when the directive is unbound from the element.
 
-**Example**
+**Пример**
 
 ``` js
 Vue.directive('my-directive', {
