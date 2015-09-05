@@ -1,11 +1,11 @@
-title: Custom Filters
+title: Пользовательские фильтры
 type: guide
 order: 10
 ---
 
-## The Basics
+## Основы
 
-Similar to custom directives, you can register a custom filter with the global `Vue.filter()` method, passing in a **filterID** and a **filter function**. The filter function takes a value as the argument and returns the transformed value:
+Как и с пользовательскими директивами, можно зарегистрировать пользовательские фильтры при помощи глобального метода `Vue.filter()`, передав **ID фильтра** и **функцию-фильтр**. Функция-фильтр принимает значение как аргумент и возвращает трансформированное значение:
 
 ``` js
 Vue.filter('reverse', function (value) {
@@ -18,7 +18,7 @@ Vue.filter('reverse', function (value) {
 <span v-text="message | reverse"></span>
 ```
 
-The filter function also receives any inline arguments:
+Функция-фильтр принимает также любые строковые аргументы:
 
 ``` js
 Vue.filter('wrap', function (value, begin, end) {
@@ -31,20 +31,20 @@ Vue.filter('wrap', function (value, begin, end) {
 <span v-text="message | wrap 'before' 'after'"></span>
 ```
 
-## Two-way Filters
+## Двусторонние Фильтры
 
-Up till now we have used filters to transform values coming from the model and before displaying them in the view. But it is also possible to define a filter that transforms the value before it is written back to the model from the view (input elements):
+До сих пор мы использовали фильтры для трансформации значений из модели перед отображением их в предсталении. Но также возможно определить фильтр для трансформации данных перед записью их обратно из представления (элементов ввода) в модель:
 
 ``` js
 Vue.filter('currencyDisplay', {
   currencyDisplay: {
     // model -> view
-    // formats the value when updating the input element.
+    // для вывода в шаблон
     read: function(val) {
       return '$'+val.toFixed(2)
     },
     // view -> model
-    // formats the value when updating the data.
+    // для записи обновлённых данных в модель
     write: function(val, oldVal) {
       var number = +val.replace(/[^\d.]/g, '')
       return isNaN(number) ? 0 : number
@@ -53,7 +53,7 @@ Vue.filter('currencyDisplay', {
 }
 ```
 
-Demo:
+Демо:
 
 {% raw %}
 <div id="two-way-filter-demo" class="demo">
@@ -81,9 +81,9 @@ new Vue({
 </script>
 {% endraw %}
 
-## Dynamic Arguments
+## Динамические Аргументы
 
-If a filter argument is not enclosed by quotes, it will be evaluated dynamically in the current vm's data context. In addition, the filter function is always invoked using the current vm as its `this` context. For example:
+Если аргументы фильтра не взяты в кавычки, они будут автоматически обработаны в контексте текущей МОдели Представления. Также функция-фильтр всегда вызывается в контексте `this` текущей Модели Представления. Например:
 
 ``` html
 <input v-model="userInput">
@@ -97,8 +97,8 @@ Vue.filter('concat', function (value, input) {
 })
 ```
 
-For this simple example above, you can achieve the same result with just an expression, but for more complicated procedures that need more than one statement, you need to put them either in a computed property or a custom filter.
+Для этого простого примера мы можем достичь результата просто с выражением, но для более сложных процедур, требущих не одно выражение, необходимо положить их в вычисляемое свойство или пользовательский фильтр.
 
-The built-in `filterBy` and `orderBy` filters are both filters that perform non-trivial work on the Array being passed in and relies on the current state of the owner Vue instance.
+Встроенные фильтры `filterBy` и `orderBy` производят нетривиальные операции над переданным Массивом и ссылаются на текущее состояние родительского экземпляра Vue.
 
-Alright! Now it's time to learn how the [Component System](/guide/components.html) works.
+Итак! Пришло время узнать как работает [Система Компонентов](/guide/components.html).
