@@ -1,43 +1,43 @@
-title: Custom Directives
+title: Пользовательские директивы
 type: guide
 order: 9
 ---
 
-## The Basics
+## Основы
 
-Vue.js allows you to register custom directives, essentially enabling you to teach Vue new tricks on how to map data changes to DOM behavior. You can register a global custom directive with the `Vue.directive(id, definition)` method, passing in a **directive id** followed by a **definition object**. A definition object can provide several hook functions (all optional):
+Vue.js позволяет зарегистрировать пользовательские директивы, позволяя тем самым обучить Vue новому  поведению в обновлении DOM при изменении данных. Можно зарегистрировать глобальную пользовательскую директиву при помощи метода `Vue.directive(id, definition)`, пердав **id директивы**, а после  **объект директивы**. Объект директивы может иметь несколько функций-обработчиков (все необязеталеьные):
 
-- **bind**: called only once, when the directive is first bound to the element.
-- **update**: called for the first time immediately after `bind` with the initial value, then again whenever the binding value changes. The new value and the previous value are provided as the argument.
-- **unbind**: called only once, when the directive is unbound from the element.
+- **bind**: вызывается один раз, когда директива подвызывается к элементу впервые.
+- **update**: в первый раз вызывается сразу после вызова `bind` с изначальным связанным значением, после вызывается каждый раз при изменении связанного значения. Новое и старое значения передаются в виде аргументов.
+- **unbind**: вызывается один раз, когда директива отвязывается от элемента.
 
-**Example**
+**Пример**
 
 ``` js
 Vue.directive('my-directive', {
   bind: function () {
-    // do preparation work
-    // e.g. add event listeners or expensive stuff
-    // that needs to be run only once
+    // проводим подготовительную работу
+    // например, добавляем слушатели событий или "дорогие" вычисления
+    // которые необходимо сделать только один раз
   },
   update: function (newValue, oldValue) {
-    // do something based on the updated value
-    // this will also be called for the initial value
+    // делаем что-то на основе обновлённого значения
+    // это также будет произведено для изначального значения
   },
   unbind: function () {
-    // do clean up work
-    // e.g. remove event listeners added in bind()
+    // провести очистку
+    // например убрать слушатели событий, установленные в bind()
   }
 })
 ```
 
-Once registered, you can use it in Vue.js templates like this (you need to add the Vue.js prefix to it):
+Сразу после регистрации, вы можете использовать её в шаблонах Vue.js следующим образом (необходимо добавить префикс Vue.js к имени):
 
 ``` html
 <div v-my-directive="someValue"></div>
 ```
 
-When you only need the `update` function, you can pass in a single function instead of the definition object:
+Когда вам необходима только функция `update`, можно передать её единственным аргументом вместо объекта директивы:
 
 ``` js
 Vue.directive('my-directive', function (value) {
@@ -45,18 +45,18 @@ Vue.directive('my-directive', function (value) {
 })
 ```
 
-All the hook functions will be copied into the actual **directive object**, which you can access inside these functions as their `this` context. The directive object exposes some useful properties:
+Все функции-обработчики будут скопированы в текущий **объект директивы**, который доступен внутри этих функций как контекст `this`. Объект директивы даёт доступ к некоторым полезным свойствам:
 
-- **el**: the element the directive is bound to.
-- **vm**: the context ViewModel that owns this directive.
-- **expression**: the expression of the binding, excluding arguments and filters.
-- **arg**: the argument, if present.
-- **raw**: the raw, unparsed expression.
-- **name**: the name of the directive, without the prefix.
+- **el**: элемент к которому подвязана директива.
+- **vm**: контекстная Модель Представления содержащая эту директиву.
+- **expression**: выражение подвязки, исключая аргументы и фильтры.
+- **arg**: аргумент, если есть.
+- **raw**: ориганльное, не распарсенное выражение.
+- **name**: имя директивы, без префикса.
 
-<p class="tip">You should treat all these properties as read-only and refrain from changing them. You can attach custom properties to the directive object too, but be careful not to accidentally overwrite existing internal ones.</p>
+<p class="tip">Рассматривайте все эти опции как достпуные только для чтения и воздерживайтесь от их модификации. Можно также прописать пользовательские свойства к объекту директивы, но будьте внимательны и не затроньте существующие внутренние свойтсва.</p>
 
-An example of a custom directive using some of these properties:
+Пример пользовательской директивы, использующей некоторые их этих свойств:
 
 ``` html
 <div id="demo" v-demo="LightSlateGray : msg"></div>
@@ -85,7 +85,7 @@ var demo = new Vue({
 })
 ```
 
-**Result**
+**Результат**
 
 <div id="demo" v-demo="LightSlateGray : msg"></div>
 <script>
@@ -111,15 +111,15 @@ var demo = new Vue({
 })
 </script>
 
-### Multiple Clauses
+### Множественное использование
 
-Comma separated arguments are bound as multiple directive instances. In the following example, directive methods are called twice:
+Аргументы, разделённые через запятую, подвязываются как несколько экземпляров директивы. В следующем примере методы директивые вызываются дважды:
 
 ``` html
 <div v-demo="color: 'white', text: 'hello!'"></div>
 ```
 
-You can achieve single binding with all arguments by closing value with object literal:
+Достичь единичного привыязвания со всеми аргументами можно передав их в виде объекта:
 
 ``` html
 <div v-demo="{color: 'white', text: 'hello!'}"></div>
@@ -131,11 +131,11 @@ Vue.directive('demo', function (value) {
 })
 ```
 
-## Literal Directives
+## Строковые Директивы
 
-If you pass in `isLiteral: true` when creating a custom directive, the attribute value will be taken as a literal string and assigned as that directive's `expression`. The directive will not attempt to setup data observation.
+При создании пользователськой директивы можно указать `isLiteral: true`. В этом случае аттрибут будет взят как строковое значение и присовоен как `expression` директивы. Директива не будет пытаться установить отслеживание изменения данных.
 
-Example:
+Пример:
 
 ``` html
 <div v-literal-dir="foo"></div>
@@ -150,29 +150,28 @@ Vue.directive('literal-dir', {
 })
 ```
 
-### Dynamic Literal
+### Динамическое Строковое Значение
 
-However, in the case that the literal directive contains mustache tags, the behavior is as follows:
+Однако, в случае, когда строковая директива содержит шаблонный тег, поведение меняется:
 
-- The directive instance will have a flag `this._isDynamicLiteral` set to `true`;
+- Экземпляр директивы будет иметь флаг `this._isDynamicLiteral` установленный в `true`;
 
-- If no `update` function is provided, the mustache expression will be evaluated only once and assigned to `this.expression`. No data observation happens.
+- Если нет функции `update`, шаблонный тег будет обработан только один раз и присвоен  `this.expression`. Ослеживания изменения данных не будет.
 
-- If an `update` function is provided, the directive **will** setup data observation for that expression and call `update` when the evaluated result changes.
+- Если указана функция `update`, директива **установит** отслеживание изменнеия данных этого выражения и вызовет метод `update` при изменении.
 
-## Two-way Directives
+## Директивы с Двусторонней Связью
 
-If your directive expects to write data back to the Vue instance, you need to pass in `twoWay: true`. This option allows the use of `this.set(value)` inside the directive:
+Если директива будет записывать данные обратно в экземпляр Vue, необходимо указать параметр `twoWay: true`. Этот параметр позволяет использовать `this.set(value)` внтури директивы:
 
 ``` js
 Vue.directive('example', {
   twoWay: true,
   bind: function () {
     this.handler = function () {
-      // set data back to the vm.
-      // If the directive is bound as v-example="a.b.c",
-      // this will attempt to set `vm.a.b.c` with the
-      // given value.
+      // устанавливает данные обратно в vm.
+      // Если директива свызана как v-example="a.b.c",
+      // она попытается установить текущее значение в `vm.a.b.c`
       this.set(this.el.value)
     }.bind(this)
     this.el.addEventListener('input', this.handler)
@@ -183,9 +182,9 @@ Vue.directive('example', {
 })
 ```
 
-## Inline Statements
+## Строковые Выражения
 
-Passing in `acceptStatement:true` enables your custom directive to accept inline statements like `v-on` does:
+Установка `acceptStatement:true` позволяет пользовательской директиве принимать строковые выражения, как это делает `v-on`:
 
 ``` html
 <div v-my-directive="a++"></div>
@@ -195,18 +194,17 @@ Passing in `acceptStatement:true` enables your custom directive to accept inline
 Vue.directive('my-directive', {
   acceptStatement: true,
   update: function (fn) {
-    // the passed in value is a function which when called,
-    // will execute the "a++" statement in the owner vm's
-    // scope.
+    // переданное выражение - это функция, которая при вызове
+    // обработает выражение "a++" в контексте vm владельца
   }
 })
 ```
 
-Use this wisely though, because in general you want to avoid side-effects in your templates.
+Используйте это с осторожностью, т.к. в общем случае  необходимо избегать побочных эффектов в шаблонах.
 
-## Deep Observation
+## Глубокое Отслеживание Изменений
 
-If your custom directive is expected to be used on an Object, and it needs to trigger `update` when a nested property inside the object changes, you need to pass in `deep: true` in your directive definition.
+Если директива создана для отслеживания Объекта и нееобходимо, чтобы метод `update` вызывался при изменении свойства внутри объекта, нужно указать `deep: true` в объекте директивы.
 
 ``` html
 <div v-my-directive="obj"></div>
@@ -216,45 +214,44 @@ If your custom directive is expected to be used on an Object, and it needs to tr
 Vue.directive('my-directive', {
   deep: true,
   update: function (obj) {
-    // will be called when nested properties in `obj`
-    // changes.
+    // вызывается при изменении вложенных свойств объекта `obj`
   }
 })
 ```
 
-## Directive Priority
+## Приоритет Директив
 
-You can optionally provide a priority number for your directive (defaults to 0). A directive with a higher priority will be processed earlier than other directives on the same element. Directives with the same priority will be processed in the order they appear in the element's attribute list, although that order is not guaranteed to be consistent in different browsers.
+Можно указать необязательный порядок приоритета для ваших директив (по-умолчанию 0). Директивы с более высоким приоритетом обрабатываются раньше, чем другие директивы на этом же элементе. Директивы с одинакомым приоритетом обрабатываются согласно порядку вхождения в список аттрибутов элемента, однако этот порядок не гаратнирован для разных браузеров.
 
-You can checkout the priorities for some built-in directives in the [API reference](/api/directives.html). Additionally, logic control directives `v-if` and `v-repeat` are considered "terminal" and they always have the highest priority in the compilation process.
+Вы можете узнать приоритеты для некоторых встроенных директив в [документации API](/api/directives.html). Дополнительно, логические директивы `v-if` и `v-repeat` считаются "крайними" и всегда имеют наивысший приоритет в процессе обработки.
 
-## Element Directives
+## Директивы-Элементы
 
-In some cases, we may want our directive to be used in the form of a custom element rather than as an attribute. This is very similar to Angular's notion of "E" mode directives. Element directives provide a lighter-weight alternative to full-blown components (which are explained later in the guide). You can register a custom element directive like so:
+Иногда мы хотим использовать наши директивы в виде пользовательского элемента, а не как аттрибут. Это очень похоже на подход в Angular с "E" режимом директив. Директивы-элементы являются легковесной альтернативой для полнофункциональных Компонент (которые объясняются дальше в руководстве). Можно зарегистрировать пользовательскую директиву элемент следующим образом:
 
 ``` js
 Vue.elementDirective('my-directive', {
-  // same API as normal directives
+  // такой же API как у обычных директив
   bind: function () {
-    // manipulate this.el...
+    // управляем this.el...
   }
 })
 ```
 
-Then, instead of:
+Далее, вместо:
 
 ``` html
 <div v-my-directive></div>
 ```
 
-We can write:
+Можно писать так:
 
 ``` html
 <my-directive></my-directive>
 ```
 
-Element directives cannot accept arguments or expressions, but it can read the element's attributes to determine its behavior.
+Директивы-элементы не могут принимать аргументы или выражения, но могут считывать аттрибуты элемента для определения поведения.
 
-A big difference from normal directives is that element directives are **terminal**, which means once Vue encounters an element directive, it will leave that element and all its children alone - only the element directive itself will be able to manipulate that element and its children. 
+Большая разница с обычными директивами в том, что директивы-элементы являются **крайними**, что означает, как только Vue находит директиву-элемент, то "не трогает" этот элемент и всех его потомков - только директива-элемент сама может манипулировать своим элементом и его потомками. 
 
-Next, we'll see how to [write a custom filter](/guide/custom-filter.html).
+Далее, посмотрим как [написать пользовательский фильтр](/guide/custom-filter.html).
