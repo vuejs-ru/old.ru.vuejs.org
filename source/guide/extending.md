@@ -1,11 +1,11 @@
-title: Extending Vue
+title: Расширение Vue
 type: guide
 order: 14
----
+---  
 
-## Extend with Mixins
+## Расширение Примесями
 
-Mixins are a flexible way to distribute reusable functionalities for Vue components. You can write a mixin just like a normal Vue component option object:
+Примеси это гибкий способ для распространения и повторного использования функциональности для компонентов Vue. Можно писать примеси как простой объект опций компонента Vue:
 
 ``` js
 // mixin.js
@@ -30,17 +30,17 @@ var Component = Vue.extend({
 var component = new Component() // -> "hello from mixin!"
 ```
 
-## Extend with Plugins
+## Расширение Плагинами
 
-Plugins usually adds global-level functionality to Vue.
+Обычно плагины добавляют глобальную функциональность для Vue.
 
-### Writing a Plugin
+### Создание Плагина
 
-There are typically several types of plugins you can write:
+Существует несколько типов плагинов (в зависимости от воздействия):
 
-1. Add one or more global methods. e.g. [vue-element](https://github.com/vuejs/vue-element)
-2. Add one or more global assets: directives/filters/transitions etc. e.g. [vue-touch](https://github.com/vuejs/vue-touch)
-3. Add some Vue instance methods by attaching them to Vue.prototype. The convention here is Vue instance methods should be prefixed with `$`, so that they don't conflict with user data and methods.
+1. Добавляет один или более глобальных методов, например, [vue-element](https://github.com/vuejs/vue-element)
+2. Добавляет одину или более глобальную сущность: директиву/фильтр/переход и т.п., например, [vue-touch](https://github.com/vuejs/vue-touch)
+3. Добавляет метод к экземпляру Vue, добавляя их к Vue.prototype. Договорённость здесь, что методы объекта Vue должны иметь префикс `$`, так чтобы не конфликтовать с пользовательскими данными и методами.
 
 ``` js
 exports.install = function (Vue, options) {
@@ -50,16 +50,16 @@ exports.install = function (Vue, options) {
 }
 ```
 
-### Using a Plugin
+### Использование Плагина
 
-Assuming using a CommonJS build system:
+Пример с использованием модулей CommonJS:
 ``` js
 var vueTouch = require('vue-touch')
 // use the plugin globally
 Vue.use(vueTouch)
 ```
 
-You can also pass in additional options to the plugin:
+Также можно передать в плагин дополнительные параметры:
 
 ```js
 Vue.use(require('my-plugin'), {
@@ -67,15 +67,21 @@ Vue.use(require('my-plugin'), {
 })
 ```
 
-## Existing Plugins & Tools
+## Существующие Плагины и Инструменты
 
-- [vue-router](https://github.com/vuejs/vue-router): The official router for Vue.js. Deeply integrated with Vue.js core to make building Single Page Applications a breeze. 
-- [vue-resource](https://github.com/vuejs/vue-resource): A plugin that provides services for making web requests and handle responses using a XMLHttpRequest or JSONP.
-- [vue-async-data](https://github.com/vuejs/vue-async-data): Async data loading plugin.
-- [vue-validator](https://github.com/vuejs/vue-validator): A plugin for form validations.
-- [vue-devtools](https://github.com/vuejs/vue-devtools): A Chrome devtools extension for debugging Vue.js applications.
-- [vue-touch](https://github.com/vuejs/vue-touch): Add touch-gesture directives using Hammer.js.
-- [vue-element](https://github.com/vuejs/vue-element): Register Custom Elements with Vue.js.
-- [List of User Contributed Tools](https://github.com/yyx990803/vue/wiki/User-Contributed-Components-&-Tools)
+- [vue-router](https://github.com/vuejs/vue-router): Официальный роутер для Vue.js. Глубоко интегрирован с ядром Vue.js, чтобы облегчить процесс создания одностраничных приложений. 
+- [vue-resource](https://github.com/vuejs/vue-resource): Плагин, предоставляющий сервисы для создания веб запросов и обработку ответов, используя XMLHttpRequest или JSONP.
+- [vue-async-data](https://github.com/vuejs/vue-async-data): Плагин для асинхронной загрузки начальных данных.
+- [vue-validator](https://github.com/vuejs/vue-validator): Плагин для валидации форм.
+- [vue-devtools](https://github.com/vuejs/vue-devtools): Расширение для инструментов разработчка в браузере Chrome, для отладки Vue.js приложений.
+- [vue-touch](https://github.com/vuejs/vue-touch): Добавляет директиву отслеживания жестов и касаний посредством Hammer.js.
+- [vue-element](https://github.com/vuejs/vue-element): Регистрирует Пользовательские Элементы для  Vue.js.
+- [Список сторонних инструментов](https://github.com/yyx990803/vue/wiki/User-Contributed-Components-&-Tools)
 
-Next: [Tips & Best Practices](/guide/best-practices.html).
+Далее: [Советы и Лучшие Практики](/guide/best-practices.html).
+
+*[Примесями]: Mixins
+*[Примеси]: Mixins
+*[объект опций компонента]: component option object
+*[одностраничных приложений]: Single Page Applications
+*[Пользовательские Элементы]: Custom Elements
