@@ -1,11 +1,16 @@
-title: Extending Vue
+title: Расширение Vue
 type: guide
 order: 14
 ---
 
-## Extend with Mixins
+*[Примесями]: Mixins
+*[Примеси]: Mixins
+*[объект опций компонента]: component option object
 
-Mixins are a flexible way to distribute reusable functionalities for Vue components. You can write a mixin just like a normal Vue component option object:
+
+## Расширение Примесями
+
+Примеси это гибкий способ для распространения и повторного использования функциональности для компонентов Vue. Можно писать примеси как простой объект опций компонента Vue:
 
 ``` js
 // mixin.js
@@ -30,9 +35,9 @@ var Component = Vue.extend({
 var component = new Component() // -> "hello from mixin!"
 ```
 
-## Extend with Plugins
+## Расширение Плагинами
 
-Plugins usually adds global-level functionality to Vue.
+Обычно плагины добавляют глобальную функциональность для Vue.
 
 ### Writing a Plugin
 
