@@ -97,6 +97,7 @@ markdown:
     - markdown-it-sup
     - markdown-it-sub
     - markdown-it-abbr
+    - markdown-it-attrs
   anchors:
     level: 2
     collisionSuffix: 'v'

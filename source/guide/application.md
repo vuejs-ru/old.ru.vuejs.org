@@ -1,4 +1,4 @@
-title: Building Larger Apps
+title: Создаём Большие Приложения
 type: guide
 order: 13
 ---
