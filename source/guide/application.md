@@ -13,22 +13,22 @@ Webpack и Browserify это больше, чем просто сборщики 
 
 ## Монолитные Компоненты
 
-In a typical Vue.js project we will be breaking up our code into many small components, and it would be nice to have each component encapsulate its CSS styles, template and JavaScript definition in the same place. As mentioned above, when using Webpack or Browserify, with proper source transforms we can write our components like this:
+Типичный проект с Vue.js подразумевает разделение кода на множество маленькиех компонент. И было бы хорошо инкапсулировать для каждого компонента стили CSS, шаблоны JavaScript код в одном месте. Как упомянуто  выше, при использовании Webpack или Browserify, с необходимыми трансформациями кода можно писать компоненты следующим образом:
 
 <img src="images/vue-component.png">
 
-If you are into pre-processors, you can even do this:
+При использовании препроцессоров можно делать даже так:
 
 <img src="images/vue-component-with-pre-processors.png">
 
-You can build these single-file Vue components with Webpack + [vue-loader](https://github.com/vuejs/vue-loader) or Browserify + [vueify](https://github.com/vuejs/vueify). It is recommended to use the Webpack setup because Webpack's loader API enables better file dependency tracking and caching if you are using pre-processors.
+Можно построить такие монолитные компоненты при помощи Webpack + [vue-loader](https://github.com/vuejs/vue-loader) или Browserify + [vueify](https://github.com/vuejs/vueify). Рекоммендуется использовать Webpack т.к. API загрузки Webpack's позволяет лучшее отслеживание зависимостей файлов и кеширование при использовании препроцессоров.
 
-You can find examples of the build setups on GitHub:
+Примеры настройки билдов на GitHub:
 
 - [Webpack + vue-loader](https://github.com/vuejs/vue-loader-example)
 - [Browserify + vueify](https://github.com/vuejs/vueify-example)
 
-## Routing
+## Маршрутизация
 
 For Single Page Applications, it is recommended to use the [offical vue-router library](https://github.com/vuejs/vue-router), which is now in technical preview. For more details, please refer to vue-router's [documentation](http://vuejs.github.io/vue-router/).
 
@@ -57,7 +57,7 @@ app.currentView = 'page1'
 
 With this mechanism it's also very easy to leverage external routing libraries such as [Page.js](https://github.com/visionmedia/page.js) or [Director](https://github.com/flatiron/director).
 
-## Communication with Server
+## Связь с Сервером
 
 All Vue instances can have their raw `$data` directly serialized with `JSON.stringify()` with no additional effort. The community has contributed the [vue-resource](https://github.com/vuejs/vue-resource) plugin, which provides an easy way to work with RESTful APIs. You can also use any Ajax library you like, e.g. `$.ajax` or [SuperAgent](https://github.com/visionmedia/superagent). Vue.js also plays nicely with no-backend services such as Firebase and Parse.
 
@@ -163,3 +163,4 @@ Next: [Extending Vue](/guide/extending.html).
 
 *[Использование Модулей]: Modularization
 *[Монолитные Компоненты]: Single File Components
+*[Маршрутизация]: Routing
