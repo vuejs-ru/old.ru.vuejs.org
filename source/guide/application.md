@@ -30,11 +30,11 @@ Webpack и Browserify это больше, чем просто сборщики 
 
 ## Маршрутизация
 
-For Single Page Applications, it is recommended to use the [offical vue-router library](https://github.com/vuejs/vue-router), which is now in technical preview. For more details, please refer to vue-router's [documentation](http://vuejs.github.io/vue-router/).
+Для Одностраничных Приложений рекоммендуется использовать [официальный vue-router](https://github.com/vuejs/vue-router), который пока в стадии технической разработки. Детали в [документации](http://vuejs.github.io/vue-router/).
 
-If you just need some very simple routing logic, you can also implement it by manually listening on hashchange and utilizing a dynamic component:
+Если вам необходима очень простая маршрутизация, можно реализовать её установив слушатели на событие смены хэш и используя динамический компонент:
 
-**Example:**
+**Пример:**
 
 ``` html
 <div id="app">
@@ -55,17 +55,17 @@ var app = new Vue({
 app.currentView = 'page1'
 ```
 
-With this mechanism it's also very easy to leverage external routing libraries such as [Page.js](https://github.com/visionmedia/page.js) or [Director](https://github.com/flatiron/director).
+Используя данный механизм также легко подключить сторонние бибилотеки для маршрутизации, такие как [Page.js](https://github.com/visionmedia/page.js) или [Director](https://github.com/flatiron/director).
 
 ## Связь с Сервером
 
-All Vue instances can have their raw `$data` directly serialized with `JSON.stringify()` with no additional effort. The community has contributed the [vue-resource](https://github.com/vuejs/vue-resource) plugin, which provides an easy way to work with RESTful APIs. You can also use any Ajax library you like, e.g. `$.ajax` or [SuperAgent](https://github.com/visionmedia/superagent). Vue.js also plays nicely with no-backend services such as Firebase and Parse.
+Во всех объектах Vue можно сериализовать их сырые данные `$data` с помощью `JSON.stringify()` без дополнительных усилий. Сообщество предоставило плагин [vue-resource](https://github.com/vuejs/vue-resource), упрощающий работу с RESTful APIs. Также можно использовать любую Ajax библиотеку, например, `$.ajax` или [SuperAgent](https://github.com/visionmedia/superagent). Vue.js также хорошо работает с такими сервисами без бекэнда как Firebase и Parse.
 
-## Unit Testing
+## Unit Тестирование
 
-Anything compatible with a CommonJS-based build system works. A recommendation is using the [Karma](http://karma-runner.github.io/0.12/index.html) test runner together with its [CommonJS pre-processor](https://github.com/karma-runner/karma-commonjs) to test your code modularly.
+Работают любые инструменты, совместимые с билд системами на основе модулей CommonJS. Рекоммендуется использовать систему запуска тестов [Karma](http://karma-runner.github.io/0.12/index.html) вместе с её [препроцессором CommonJS](https://github.com/karma-runner/karma-commonjs) для модульного тестирования кода.
 
-The best practice is to export raw options / functions inside modules. Consider this example:
+Наилучший подход - экспортировать сырые опции / функции внутрь модуля. Пример:
 
 ``` js
 // my-component.js
@@ -82,7 +82,7 @@ module.exports = {
 }
 ```
 
-You can use that file in your entry module like this:
+Вы сможете использовать такой файл следующим образом:
 
 ``` js
 // main.js
@@ -96,7 +96,7 @@ var app = new Vue({
 })
 ```
 
-And you can test that module like this:
+А протестировать этот модуль так:
 
 ``` js
 // Some Jasmine 2.0 tests
@@ -114,9 +114,9 @@ describe('my-component', function () {
 })
 ```
 
-<p class="tip">Since Vue.js directives react to data updates asynchronously, when you are asserting DOM state after changing the data, you will have to do so in a `Vue.nextTick` callback.</p>
+<p class="tip">Так как директивы Vue.js реагируют на изменения данных асинхронно, во время проверки состояния DOM элементов после изменения данных, вам необходимо делать это в коллбеке `Vue.nextTick`.</p>
 
-## Deploying for Production
+## Подготовка к Продакш Окружению
 
 The minified standalone build of Vue.js has already stripped out all the warnings for you for a smaller file size, but when you are using tools like Browserify or Webpack to build Vue.js applications, it's not so obvious how to do that.
 
@@ -164,3 +164,4 @@ Next: [Extending Vue](/guide/extending.html).
 *[Использование Модулей]: Modularization
 *[Монолитные Компоненты]: Single File Components
 *[Маршрутизация]: Routing
+*[Одностраничных Приложений]: Single Page Applications
