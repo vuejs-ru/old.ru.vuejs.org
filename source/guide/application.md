@@ -1,40 +1,40 @@
-title: Building Larger Apps
+title: Создаём Большие Приложения
 type: guide
 order: 13
 ---
 
-Vue.js is designed to be as flexible as possible - it's just an interface library that doesn't enforce any architectural decisions. While this can be very useful for rapid prototyping, it could be a challenge for those with less experience to build larger scale applications with it. The following is an opinionated perspective on how to organize larger projects when using Vue.js.
+Vue.js создан с учетом максимальной гибкости - это всего лишь библиотека для создания интрефейса и не навязывает никаких архитектурных решений. В то время как это полезно для быстрого прототипирования, это вызвать затруднения для разработчиков с небольшим опытом при построении широкомасштабных приложений. Далее приведены идеи по поводу ориганизации широкомасштабных приложений с Vue.js.
 
-## Modularization
+## Использование Модулей
 
-Although the standalone build of Vue.js can be used as a global, it is often better to utilize a modularized build system to better organize your code. The recommended approach of doing so is by writing your source code in CommonJS modules (the format used by Node.js, and also the format used by Vue.js source code) and bundle them using [Webpack](http://webpack.github.io/) or [Browserify](http://browserify.org/).
+В то время как самостоятельная сборка Vue.js может быть использована в глобальной области видимости, чаще лучше использовать модульный подход и системы сборки модулей для организации кода. Рекоммедуется писать исходный код в виде модулей CommonJS (формат испольуемый в Node.js, также испольуется для исходного кода Vue.js) и собирать их в пакеты с помощью инструментов [Webpack](http://webpack.github.io/) или [Browserify](http://browserify.org/).
 
-Webpack and Browserify are more than just module bundlers, though. They both provide source transform APIs that allow you to transform your source code with other pre-processors. For example, you can write your code with future ES6/7 syntax using [babel-loader](https://github.com/babel/babel-loader) or [babelify](https://github.com/babel/babelify).
+Webpack и Browserify это больше, чем просто сборщики модулей. Оба инструмента предоставляют API для трансформации исходного кода с помощью различных препроцессоров. Например, можно писать свой код используя новшества синтаксиса ES6/7 с [babel-loader](https://github.com/babel/babel-loader) или [babelify](https://github.com/babel/babelify).
 
-## Single File Components
+## Монолитные Компоненты
 
-In a typical Vue.js project we will be breaking up our code into many small components, and it would be nice to have each component encapsulate its CSS styles, template and JavaScript definition in the same place. As mentioned above, when using Webpack or Browserify, with proper source transforms we can write our components like this:
+Типичный проект с Vue.js подразумевает разделение кода на множество маленькиех компонент. И было бы хорошо инкапсулировать для каждого компонента стили CSS, шаблоны JavaScript код в одном месте. Как упомянуто  выше, при использовании Webpack или Browserify, с необходимыми трансформациями кода можно писать компоненты следующим образом:
 
 <img src="images/vue-component.png">
 
-If you are into pre-processors, you can even do this:
+При использовании препроцессоров можно делать даже так:
 
 <img src="images/vue-component-with-pre-processors.png">
 
-You can build these single-file Vue components with Webpack + [vue-loader](https://github.com/vuejs/vue-loader) or Browserify + [vueify](https://github.com/vuejs/vueify). It is recommended to use the Webpack setup because Webpack's loader API enables better file dependency tracking and caching if you are using pre-processors.
+Можно построить такие монолитные компоненты при помощи Webpack + [vue-loader](https://github.com/vuejs/vue-loader) или Browserify + [vueify](https://github.com/vuejs/vueify). Рекоммендуется использовать Webpack т.к. API загрузки Webpack's позволяет лучшее отслеживание зависимостей файлов и кеширование при использовании препроцессоров.
 
-You can find examples of the build setups on GitHub:
+Примеры настройки билдов на GitHub:
 
 - [Webpack + vue-loader](https://github.com/vuejs/vue-loader-example)
 - [Browserify + vueify](https://github.com/vuejs/vueify-example)
 
-## Routing
+## Маршрутизация
 
-For Single Page Applications, it is recommended to use the [offical vue-router library](https://github.com/vuejs/vue-router), which is now in technical preview. For more details, please refer to vue-router's [documentation](http://vuejs.github.io/vue-router/).
+Для Одностраничных Приложений рекоммендуется использовать [официальный vue-router](https://github.com/vuejs/vue-router), который пока в стадии технической разработки. Детали в [документации](http://vuejs.github.io/vue-router/).
 
-If you just need some very simple routing logic, you can also implement it by manually listening on hashchange and utilizing a dynamic component:
+Если вам необходима очень простая маршрутизация, можно реализовать её установив слушатели на событие смены хэш и используя динамический компонент:
 
-**Example:**
+**Пример:**
 
 ``` html
 <div id="app">
@@ -55,17 +55,17 @@ var app = new Vue({
 app.currentView = 'page1'
 ```
 
-With this mechanism it's also very easy to leverage external routing libraries such as [Page.js](https://github.com/visionmedia/page.js) or [Director](https://github.com/flatiron/director).
+Используя данный механизм также легко подключить сторонние бибилотеки для маршрутизации, такие как [Page.js](https://github.com/visionmedia/page.js) или [Director](https://github.com/flatiron/director).
 
-## Communication with Server
+## Связь с Сервером
 
-All Vue instances can have their raw `$data` directly serialized with `JSON.stringify()` with no additional effort. The community has contributed the [vue-resource](https://github.com/vuejs/vue-resource) plugin, which provides an easy way to work with RESTful APIs. You can also use any Ajax library you like, e.g. `$.ajax` or [SuperAgent](https://github.com/visionmedia/superagent). Vue.js also plays nicely with no-backend services such as Firebase and Parse.
+Во всех объектах Vue можно сериализовать их сырые данные `$data` с помощью `JSON.stringify()` без дополнительных усилий. Сообщество предоставило плагин [vue-resource](https://github.com/vuejs/vue-resource), упрощающий работу с RESTful APIs. Также можно использовать любую Ajax библиотеку, например, `$.ajax` или [SuperAgent](https://github.com/visionmedia/superagent). Vue.js также хорошо работает с такими сервисами без бекэнда как Firebase и Parse.
 
-## Unit Testing
+## Unit Тестирование
 
-Anything compatible with a CommonJS-based build system works. A recommendation is using the [Karma](http://karma-runner.github.io/0.12/index.html) test runner together with its [CommonJS pre-processor](https://github.com/karma-runner/karma-commonjs) to test your code modularly.
+Работают любые инструменты, совместимые с билд системами на основе модулей CommonJS. Рекоммендуется использовать систему запуска тестов [Karma](http://karma-runner.github.io/0.12/index.html) вместе с её [препроцессором CommonJS](https://github.com/karma-runner/karma-commonjs) для модульного тестирования кода.
 
-The best practice is to export raw options / functions inside modules. Consider this example:
+Наилучший подход - экспортировать сырые опции / функции внутрь модуля. Пример:
 
 ``` js
 // my-component.js
@@ -82,7 +82,7 @@ module.exports = {
 }
 ```
 
-You can use that file in your entry module like this:
+Вы сможете использовать такой файл следующим образом:
 
 ``` js
 // main.js
@@ -96,7 +96,7 @@ var app = new Vue({
 })
 ```
 
-And you can test that module like this:
+А протестировать этот модуль так:
 
 ``` js
 // Some Jasmine 2.0 tests
@@ -114,9 +114,9 @@ describe('my-component', function () {
 })
 ```
 
-<p class="tip">Since Vue.js directives react to data updates asynchronously, when you are asserting DOM state after changing the data, you will have to do so in a `Vue.nextTick` callback.</p>
+<p class="tip">Так как директивы Vue.js реагируют на изменения данных асинхронно, во время проверки состояния DOM элементов после изменения данных, вам необходимо делать это в коллбеке `Vue.nextTick`.</p>
 
-## Deploying for Production
+## Подготовка к Продакш Окружению
 
 The minified standalone build of Vue.js has already stripped out all the warnings for you for a smaller file size, but when you are using tools like Browserify or Webpack to build Vue.js applications, it's not so obvious how to do that.
 
@@ -160,3 +160,8 @@ NODE_ENV=production browserify -e main.js | uglifyjs -c -m > build.js
 The [Vue.js Hackernews Clone](https://github.com/yyx990803/vue-hackernews) is an example application that uses Webpack + vue-loader for code organization, Director.js for routing, and HackerNews' official Firebase API as the backend. It's by no means a big application, but it demonstrates the combined usage of the concepts discussed on this page.
 
 Next: [Extending Vue](/guide/extending.html).
+
+*[Использование Модулей]: Modularization
+*[Монолитные Компоненты]: Single File Components
+*[Маршрутизация]: Routing
+*[Одностраничных Приложений]: Single Page Applications
