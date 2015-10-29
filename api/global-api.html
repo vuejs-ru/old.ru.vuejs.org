@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Global API - vue.js</title>
+        <base href="/vuejs.org/" >
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Source+Code+Pro|Dosis:300,500' rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/vuejs.org/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = "api"
+        </script>
+        <link rel="stylesheet" href="/vuejs.org/css/page.css" type="text/css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/vuejs.org/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/vuejs.org/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link current">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+</div>
+
+            <div id="main">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link current">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+    <div class="list">
+        
+        <h2>Документация API</h2>
+        
+        <ul class="menu-root">
+            
+                <li>
+                    <a href="/vuejs.org/api/index.html" class="sidebar-link">Обзор</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/options.html" class="sidebar-link">Component Options</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/instance-properties.html" class="sidebar-link">Instance Properties</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/instance-methods.html" class="sidebar-link">Instance Methods</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/global-api.html" class="sidebar-link current">Global API</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/directives.html" class="sidebar-link">Directives</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/filters.html" class="sidebar-link">Filters</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/elements.html" class="sidebar-link new">Special Elements</a>
+                </li>
+            
+            <li><a href="http://legacy.vuejs.org">Документация для v.0.11</a></li>
+            <li style="margin:10px 0 3px">
+              <script data-gittip-username="yyx990803"
+                data-gittip-widget="button"
+                src="//gttp.co/v1.js"></script>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="content api with-sidebar">
+    <h1>Global API</h1>
+    <div id="ad">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+    </div>
+    <h3 id="vue-config">Vue.config</h3>
+<p><code>Vue.config</code> is an object containing Vue’s global settings. Here are the list of all the avaiable settings with their default values:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// enable debug mode. see below for details.</span></span><br><span class="line">  debug: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// enable strict mode. see below for details.</span></span><br><span class="line">  strict: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// attribute prefix for directives</span></span><br><span class="line">  prefix: <span class="string">'v-'</span>,</span><br><span class="line">  <span class="comment">// interpolation delimiters</span></span><br><span class="line">  <span class="comment">// for HTML interpolations, add</span></span><br><span class="line">  <span class="comment">// 1 extra outer-most character.</span></span><br><span class="line">  delimiters: [<span class="string">'&#123;&#123;'</span>, <span class="string">'&#125;&#125;'</span>],</span><br><span class="line">  <span class="comment">// suppress warnings?</span></span><br><span class="line">  silent: <span class="literal">false</span>,</span><br><span class="line">  <span class="comment">// interpolate mustache bindings?</span></span><br><span class="line">  interpolate: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// use async updates (for directives &amp; watchers)?</span></span><br><span class="line">  <span class="keyword">async</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="comment">// allow altering observed Array's prototype chain?</span></span><br><span class="line">  proto: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can modify them directly, for example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.debug = <span class="literal">true</span> <span class="comment">// turn on debugging mode</span></span><br></pre></td></tr></table></figure>
+<h4 id="debug-mode">Debug Mode</h4>
+<p>When <code>Vue.config.debug</code> is set to true, Vue will:</p>
+<ol>
+<li>Print stack traces for all warnings.</li>
+<li>Make all anchor nodes visible in the DOM as Comment nodes. This makes it easier to inspect the structure of the rendered result.</li>
+</ol>
+<p class="tip">debug mode is not available in the minified production builds.</p>
+<h4 id="strict-mode">Strict Mode</h4>
+<p>By default, Vue components inherit all assets from both the class inheritance chain (via <code>Vue.extend</code>) AND their parents in the view hierarchy. In strict mode, components will only be able to inherit assets from the class inheritance chain, but NOT from their parents in the view hierarchy. When strict mode is enabled, assets should be either registered globally, or explicitly depended on by the component that needs them. When enforced, this could result in better component encapsulation and reusability in larger projects.</p>
+<h4 id="changing-delimiters">Changing Delimiters</h4>
+<p>When the delimiters are set for text interpolation, the delimiters for HTML interpolation will be generated by adding one outer-most symbol on both sides:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.delimiters = [<span class="string">'(%'</span>, <span class="string">'%)'</span>]</span><br><span class="line"><span class="comment">// tags now are (% %) for text</span></span><br><span class="line"><span class="comment">// and ((% %)) for HTML</span></span><br></pre></td></tr></table></figure>
+<h3 id="vue-extend-options">Vue.extend( options )</h3>
+<ul>
+<li><strong>options</strong> <code>Object</code></li>
+</ul>
+<p>Create a “subclass” of the base Vue constructor. All <a href="/api/options.html">instantiation options</a> can be used here. The special cases to note here are <code>el</code> and <code>data</code>, which must be functions in this case.</p>
+<p>Internally, <code>Vue.extend()</code> is called on all component options before instantiating the components. For more details regarding components, see <a href="/guide/components.html">Component System</a>.</p>
+<p><strong>Example</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"mount-point"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// create reusable constructor</span></span><br><span class="line"><span class="keyword">var</span> Profile = Vue.extend(&#123;</span><br><span class="line">  template: <span class="string">'&lt;p&gt;&#123;&#123;firstName&#125;&#125; &#123;&#123;lastName&#125;&#125; aka &#123;&#123;alias&#125;&#125;&lt;/p&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// create an instance of Profile</span></span><br><span class="line"><span class="keyword">var</span> profile = <span class="keyword">new</span> Profile(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    firstName : <span class="string">'Walter'</span>,</span><br><span class="line">    lastName  : <span class="string">'White'</span>,</span><br><span class="line">    alias     : <span class="string">'Heisenberg'</span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// mount it on an element</span></span><br><span class="line">profile.$mount(<span class="string">'#mount-point'</span>)</span><br></pre></td></tr></table></figure>
+<p>Will result in:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>Walter White aka Heisenberg<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="vue-nexttick-callback">Vue.nextTick( callback )</h3>
+<ul>
+<li><strong>callback</strong> <code>Function</code></li>
+</ul>
+<p>Defer the callback to be executed after the next DOM update cycle. Use it immediately after you’ve changed some data to wait for the DOM update. For more details see <a href="/guide/best-practices.html#Understanding_Async_Updates">Understanding Async Updates</a>.</p>
+<h3 id="vue-directive-id-definition">Vue.directive( id, [definition] )</h3>
+<ul>
+<li><strong>id</strong> <code>String</code></li>
+<li><strong>definition</strong> <code>Function</code> or <code>Object</code> <em>optional</em></li>
+</ul>
+<p>Register or retrieve a global custom directive. For more details see <a href="/guide/custom-directive.html">Writing Custom Directives</a>.</p>
+<h3 id="vue-elementdirective-id-definition">Vue.elementDirective( id, [definition] )</h3>
+<ul>
+<li><strong>id</strong> <code>String</code></li>
+<li><strong>definition</strong> <code>Function</code> or <code>Object</code> <em>optional</em></li>
+</ul>
+<p>Register or retrieve a global custom element directive. For more details see <a href="/guide/custom-directive.html#Element_Directives">Element Directives</a>.</p>
+<h3 id="vue-filter-id-definition">Vue.filter( id, [definition] )</h3>
+<ul>
+<li><strong>id</strong> <code>String</code></li>
+<li><strong>definition</strong> <code>Function</code> <em>optional</em></li>
+</ul>
+<p>Register or retrieve a global custom filter. For more details see <a href="/guide/custom-filter.html">Writing Custom Filters</a>.</p>
+<h3 id="vue-component-id-definition">Vue.component( id, [definition] )</h3>
+<ul>
+<li><strong>id</strong> <code>String</code></li>
+<li><strong>definition</strong> <code>Function Constructor</code> or <code>Object</code> <em>optional</em></li>
+</ul>
+<p>Register or retrieve a global component. For more details see <a href="/guide/components.html">Component System</a>.</p>
+<h3 id="vue-transition-id-definition">Vue.transition( id, [definition] )</h3>
+<ul>
+<li><strong>id</strong> <code>String</code></li>
+<li><strong>definition</strong> <code>Object</code> <em>optional</em></li>
+</ul>
+<p>Register or retrieve a global JavaScript transition effect definition. For more details see the guide for <a href="/guide/transitions.html#JavaScript_Only_Transitions">JavaScript Transitions</a>.</p>
+<h3 id="vue-partial-id-partial">Vue.partial( id, [partial] )</h3>
+<ul>
+<li><strong>id</strong> <code>String</code></li>
+<li><strong>partial</strong> <code>String</code> <em>optional</em></li>
+</ul>
+<p>Register or retrieve a global template partial string. For more details see <a href="/api/elements.html#partial">Partial</a>.</p>
+<h3 id="vue-use-plugin-args">Vue.use( plugin, [args…] )</h3>
+<ul>
+<li><strong>plugin</strong> <code>Object</code> or <code>Function</code></li>
+<li><strong>args…</strong> <em>optional</em></li>
+</ul>
+<p>Mount a Vue.js plugin. If the plugin is an Object, it must have an <code>install</code> method. If it is a function itself, it will be treated as the install method. The install method will be called with Vue as the argument. For more details, see <a href="/guide/extending.html#Extend_with_Plugins">Plugins</a>.</p>
+<h3 id="vue-util">Vue.util</h3>
+<p>Exposes the internal <code>util</code> module, which contains a number of utility methods. This is intended for advanced plugin/directive authoring, so you will need to look at the source code to see what’s available.</p>
+
+    <div class="footer">Нашли ошибку или хотите помочь с переводом документации? <a href="https://github.com/vuejs-ru/vuejs.org" target="_blank">Создайте форк на Github</a>!</div>
+</div>
+
+                
+            </div>
+            <script src="/vuejs.org/js/smooth-scroll.min.js"></script>
+            <script src="/vuejs.org/js/common.js"></script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

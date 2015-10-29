@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Instance Properties - vue.js</title>
+        <base href="/vuejs.org/" >
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Source+Code+Pro|Dosis:300,500' rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/vuejs.org/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = "api"
+        </script>
+        <link rel="stylesheet" href="/vuejs.org/css/page.css" type="text/css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/vuejs.org/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/vuejs.org/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link current">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+</div>
+
+            <div id="main">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link current">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+    <div class="list">
+        
+        <h2>Документация API</h2>
+        
+        <ul class="menu-root">
+            
+                <li>
+                    <a href="/vuejs.org/api/index.html" class="sidebar-link">Обзор</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/options.html" class="sidebar-link">Component Options</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/instance-properties.html" class="sidebar-link current">Instance Properties</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/instance-methods.html" class="sidebar-link">Instance Methods</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/global-api.html" class="sidebar-link">Global API</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/directives.html" class="sidebar-link">Directives</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/filters.html" class="sidebar-link">Filters</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/elements.html" class="sidebar-link new">Special Elements</a>
+                </li>
+            
+            <li><a href="http://legacy.vuejs.org">Документация для v.0.11</a></li>
+            <li style="margin:10px 0 3px">
+              <script data-gittip-username="yyx990803"
+                data-gittip-widget="button"
+                src="//gttp.co/v1.js"></script>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="content api with-sidebar">
+    <h1>Instance Properties</h1>
+    <div id="ad">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+    </div>
+    <h3 id="vm-el">vm.$el</h3>
+<ul>
+<li><strong>Type:</strong> <code>HTMLElement</code></li>
+<li><strong>Read only</strong></li>
+</ul>
+<p>The DOM element that the Vue instance is managing. Note that for <a href="/guide/best-practices.html#Fragment_Instance">Fragment Instances</a>, <code>vm.$el</code> will return an anchor node that indicates the starting position of the fragment.</p>
+<h3 id="vm-data">vm.$data</h3>
+<ul>
+<li><strong>Type:</strong> <code>Object</code></li>
+</ul>
+<p>The data object that the Vue instance is observing. You can swap it with a new object. The Vue instance proxies access to the properties on its data object.</p>
+<h3 id="vm-options">vm.$options</h3>
+<ul>
+<li><strong>Type:</strong> <code>Object</code></li>
+</ul>
+<p>The instantiation options used for the current Vue instance. This is useful when you want to include custom properties in the options:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  customOption: <span class="string">'foo'</span>,</span><br><span class="line">  created: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$options.customOption) <span class="comment">// -&gt; 'foo'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="vm-parent">vm.$parent</h3>
+<ul>
+<li><strong>Type:</strong> <code>Vue</code></li>
+<li><strong>Read only</strong></li>
+</ul>
+<p>The parent instance, if the current instance has one.</p>
+<h3 id="vm-root">vm.$root</h3>
+<ul>
+<li><strong>Type:</strong> <code>Vue</code></li>
+<li><strong>Read only</strong></li>
+</ul>
+<p>The root Vue instance of the current component tree. If the current instance has no parents this value will be itself.</p>
+<h3 id="vm-children">vm.$children</h3>
+<ul>
+<li><strong>Type:</strong> <code>Array&lt;Vue&gt;</code></li>
+<li><strong>Read only</strong></li>
+</ul>
+<p>The direct child components of the current instance.</p>
+<h3 id="vm">vm.$</h3>
+<ul>
+<li><strong>Type:</strong> <code>Object</code></li>
+<li><strong>Read only</strong></li>
+</ul>
+<p>An object that holds child components that have <code>v-ref</code> registered. For more details see <a href="/api/directives.html#v-ref">v-ref</a>.</p>
+<h3 id="vm-v2">vm.$$</h3>
+<ul>
+<li><strong>Type:</strong> <code>Object</code></li>
+<li><strong>Read only</strong></li>
+</ul>
+<p>An object that holds DOM elements that have <code>v-el</code> registered. For more details see <a href="/api/directives.html#v-el">v-el</a>.</p>
+<h3 id="meta-properties">Meta Properties</h3>
+<p>Instances created by <code>v-repeat</code> will also have some meta properties, e.g. <code>vm.$index</code>, <code>vm.$key</code> and <code>vm.$value</code>. For more details, see <a href="/guide/list.html">the guide on using <code>v-repeat</code></a>.</p>
+
+    <div class="footer">Нашли ошибку или хотите помочь с переводом документации? <a href="https://github.com/vuejs-ru/vuejs.org" target="_blank">Создайте форк на Github</a>!</div>
+</div>
+
+                
+            </div>
+            <script src="/vuejs.org/js/smooth-scroll.min.js"></script>
+            <script src="/vuejs.org/js/common.js"></script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

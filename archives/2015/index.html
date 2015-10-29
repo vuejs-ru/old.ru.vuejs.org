@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue.js</title>
+        <base href="/vuejs.org/" >
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Source+Code+Pro|Dosis:300,500' rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/vuejs.org/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = ""
+        </script>
+        <link rel="stylesheet" href="/vuejs.org/css/page.css" type="text/css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/vuejs.org/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/vuejs.org/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+</div>
+
+            <div id="main">
+                
+                    <div id="hero">
+    <div class="inner">
+        <ul id="nav">
+            <li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+            <li><a href="/vuejs.org/api/" class="nav-link">Документация API</a></li>
+            <li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+            <li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+            <li><a href="http://cn.vuejs.org" class="nav-link">中文</a></li>
+            <li><a href="http://jp.vuejs.org" class="nav-link">日本語</a></li>
+        </ul>
+        <img id="logo" src="/vuejs.org/images/logo.png">
+        <h1>Vue.js</h1>
+        <p class="desc">Vue.js - библиотека для создания современный веб интерфейсов. <br>Предоставляет "data-reactive" компоненты с простым и гибким API.</p>
+        <p class="buttons">
+            <a href="/guide/installation.html" class="button">Установить v0.12.14</a>
+            <a href="https://github.com/yyx990803/vue" target="_blank" class="button">Код на GitHub</a>
+        </p>
+        <ul id="social">
+            <li><a href="https://twitter.com/vuejs" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @vuejs</a></li>
+            <li><iframe src="http://ghbtns.com/github-btn.html?user=yyx990803&repo=vue&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></li>
+            <li class="last"><a href="https://gitter.im/yyx990803/vue" target="_blank"><img src="https://badges.gitter.im/Join%20Chat.svg"></a></li>
+        </ul>
+    </div>
+    <div class="down"><img src="/vuejs.org/images/down.png"></div>
+</div>
+
+<div id="example">
+    <h2>Пример за 10 секунд</h2>
+    <div class="block">
+        <figure class="highlight lang-html"><table><tbody><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"demo"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">p</span>&gt;</span>{{message}}<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">v-model</span>=<span class="value">"message"</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</pre></td></tr></tbody></table></figure>
+    </div>
+
+    <div class="sign">+</div>
+
+    <div class="block">
+        <figure class="highlight lang-js"><table><tbody><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="keyword">var</span> demo = <span class="keyword">new</span> Vue({
+    el: <span class="string">'#demo'</span>,
+    data: {
+        message: <span class="string">'Привет Vue.js!'</span>
+    }
+})
+</pre></td></tr></tbody></table></figure>
+    </div>
+
+    <div class="sign">=</div>
+
+    <div class="block result">
+        <div id="demo">
+            <p>{{message}}</p>
+            <input v-model="message">
+        </div>
+        <script>
+        var demo = new Vue({
+            el: '#demo',
+            data: {
+                message: 'Привет Vue.js!'
+            }
+        })
+        </script>
+    </div>
+</div>
+<div id="features">
+    <div class="feats">
+        <div class="feat">
+            <h2><span class="icon simple"></span>Простой</h2>
+            <p>Написать HTML, получить JSON, создать экземпляр Vue, всё готово.</p>
+        </div>
+        <div class="feat">
+            <h2><span class="icon powerful"></span>Реактивный</h2>
+            <p>Выражения и вычисляемые свойства с прозрачным отслеживанием зависимостей.</p>
+        </div>
+        <div class="feat">
+            <h2><span class="icon composable"></span>Компонентный</h2>
+            <p>Создавайте своё приложение с помощью слабо связанных, переиспользуемых компонентов.</p>
+        </div>
+        <div class="feat">
+            <h2><span class="icon compact"></span>Компактный</h2>
+            <p>~22kb min+gzip, нет зависимостей.</p>
+        </div>
+        <div class="feat">
+            <h2><span class="icon fast"></span>Быстрый</h2>
+            <p>Точные и эффективные асинхронный пакетные обновления DOM.</p>
+        </div>
+        <div class="feat">
+            <h2><span class="icon module"></span>Готов к Упаковке</h2>
+            <p>Устанавливайте с помощью NPM, Bower или Duo - работайте в любимой экосистеме!</p>
+        </div>
+    </div>
+</div>
+<div id="why">
+    <h2>Попробуйте, если вам нравятся:</h2>
+    <ul>
+        <li>Расширяемая двусторонняя привязка данных</li>
+        <li>Обычные JS объекты в качестве моделей</li>
+        <li>API который просто имеет смысл</li>
+        <li>Составлять UI из компонентов</li>
+        <li>Использовать разные маленькие библиотеки</li>
+    </ul>
+</div>
+<div id="footer">
+    <a class="start" href="/vuejs.org/guide/index.html">Начать</a>
+    <p>Распространяется под лицензией <a href="http://opensource.org/licenses/MIT" target="_blank">MIT</a></p>
+    <p>Перевод на русский:
+        <a href="https://github.com/OEvgeny" target="_blank">@OEvgeny</a>, <a href="https://github.com/iJackUA" target="_blank">@iJackUA</a>
+    </p>
+    <p>Copyright (c) 2015 <a href="http://evanyou.me" target="_blank">Evan You</a></p>
+</div>
+
+<!-- Twitter follow button script -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+                
+            </div>
+            <script src="/vuejs.org/js/smooth-scroll.min.js"></script>
+            <script src="/vuejs.org/js/common.js"></script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

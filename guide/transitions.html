@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Анимированные переходы - vue.js</title>
+        <base href="/vuejs.org/" >
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Source+Code+Pro|Dosis:300,500' rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/vuejs.org/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = "guide"
+        </script>
+        <link rel="stylesheet" href="/vuejs.org/css/page.css" type="text/css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/vuejs.org/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/vuejs.org/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link current">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+</div>
+
+            <div id="main">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link current">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+    <div class="list">
+        
+        <h2>Руководство</h2>
+        
+        <ul class="menu-root">
+            
+                <li>
+                    <a href="/vuejs.org/guide/installation.html" class="sidebar-link">Установка</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/index.html" class="sidebar-link">Обзор</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/directives.html" class="sidebar-link">Директивы</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/filters.html" class="sidebar-link">Фильтры</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/list.html" class="sidebar-link">Отображение списков</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/events.html" class="sidebar-link">Обработка Событий</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/forms.html" class="sidebar-link">Управление Формами</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/computed.html" class="sidebar-link">Вычисляемые свойства</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/custom-directive.html" class="sidebar-link">Пользовательские директивы</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/custom-filter.html" class="sidebar-link">Пользовательские фильтры</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/components.html" class="sidebar-link">Component System</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/transitions.html" class="sidebar-link current">Анимированные переходы</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/application.html" class="sidebar-link">Создаём Большие Приложения</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/best-practices.html" class="sidebar-link new">Tips & Best Practices</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/faq.html" class="sidebar-link">Common FAQs</a>
+                </li>
+            
+            <li><a href="http://legacy.vuejs.org">Документация для v.0.11</a></li>
+            <li style="margin:10px 0 3px">
+              <script data-gittip-username="yyx990803"
+                data-gittip-widget="button"
+                src="//gttp.co/v1.js"></script>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="content guide with-sidebar">
+    <h1>Анимированные переходы</h1>
+    <div id="ad">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+    </div>
+    <p>Vue позволяет анимировать вставку и изъятие элементов из дерева DOM с помощью CSS-переходов. Vue автоматически применит соответствующие классы к элементу и отменит их по окончании анимации. Кроме этого, переход можно описать с помощью JavaScript.</p>
+<p>При применении директивы <code>v-transition=&quot;my-transition&quot;</code> произойдет следующее:</p>
+<ol>
+<li>
+<p>Vue попытается найти одноименный объект, описывающий переход. Такой объект представляет собой набор функций-хуков, и должен быть либо зарегистрирован глобально через <code>Vue.transition(id, hooks)</code>, либо указан под именем <code>&quot;my-transition&quot;</code> в разделе <code>transitions</code> в опциях экземпляра. Если объект найден, Vue будет вызывать функции-хуки из этого объекта в соответствующие моменты перехода.</p>
+</li>
+<li>
+<p>Vue автоматически найдет подходящие классы, и будет в соответствующие моменты применять их элементу, над которым производится операция.</p>
+</li>
+<li>
+<p>Если JavaScript-описание перехода не найдено, и в таблице стилей нет подходящих классов, тогда вставка/изъятие элемента происходит как можно быстрее (в следующем фрейме).</p>
+</li>
+</ol>
+<p class="tip">Переходы срабатывают только в том случае, если DOM-операция была инициирована через Vue, либо посредством директивы (например <code>v-if</code>), либо посредством вызова одного из методов экземпляра (например <code>vm.$appendTo()</code>.</p>
+<h2 id="css-переходы">CSS Переходы</h2>
+<p>Типичный пример использования CSS-перехода:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">v-if</span>=<span class="value">"show"</span> <span class="attribute">v-transition</span>=<span class="value">"expand"</span>&gt;</span>hello<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Для этого должны быть описаны следующие классы: <code>.expand-transition</code>, <code>.expand-enter</code> и <code>.expand-leave</code>, например:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.expand-transition</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">transition</span>:<span class="value"> all .<span class="number">3s</span> ease</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">30px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#eee</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.expand-enter</span>, <span class="class">.expand-leave</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span> <span class="number">10px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">opacity</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>В дополнение к этому можно предоставить функции-хуки:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Vue.transition(<span class="string">'expand'</span>, &#123;</span><br><span class="line"></span><br><span class="line">  beforeEnter: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    el.textContent = <span class="string">'beforeEnter'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  enter: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    el.textContent = <span class="string">'enter'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  afterEnter: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    el.textContent = <span class="string">'afterEnter'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  enterCancelled: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// handle cancellation</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  beforeLeave: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    el.textContent = <span class="string">'beforeLeave'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  leave: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    el.textContent = <span class="string">'leave'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  afterLeave: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    el.textContent = <span class="string">'afterLeave'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  leaveCancelled: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// handle cancellation</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<div id="demo"><div v-if="show" v-transition="expand">Привет!</div><button v-on="click: show = !show">Показать/скрыть</button></div>
+<style>
+.expand-transition {
+  transition: all .3s ease;
+  height: 30px;
+  padding: 10px;
+  background-color: #eee;
+  overflow: hidden;
+}
+.expand-enter, .expand-leave {
+  height: 0;
+  padding: 0 10px;
+  opacity: 0;
+}
+</style>
+<script>
+new Vue({
+  el: '#demo',
+  data: {
+    show: true,
+    transitionState: 'Idle'
+  },
+  transitions: {
+    expand: {
+      beforeEnter: function (el) {
+        el.textContent = 'beforeEnter'
+      },
+      enter: function (el) {
+        el.textContent = 'enter'
+      },
+      afterEnter: function (el) {
+        el.textContent = 'afterEnter'
+      },
+      beforeLeave: function (el) {
+        el.textContent = 'beforeLeave'
+      },
+      leave: function (el) {
+        el.textContent = 'leave'
+      },
+      afterLeave: function (el) {
+        el.textContent = 'afterLeave'
+      }
+    }
+  }
+})
+</script>
+<p>Значение директивы <code>v-transition</code> влияет на то, какие классы будут применяться к элементу. Например, в случае с <code>v-transition=&quot;fade&quot;</code>, класс <code>.fade-transition</code> будет присутствовать всегда, а классы <code>.fade-enter</code> и <code>.fade-leave</code> будут автоматически применяться и отменяться в нужные моменты. Если директиве <code>v-transition</code> не передавать значение, тогда применяться будут классы <code>.v-transition</code>, <code>.v-enter</code> и <code>.v-leave</code> соответственно.</p>
+<p>Когда свойство <code>show</code> в примере выше изменяется, Vue вставит/изымет элемент <code>&lt;div&gt;</code> из дерева, применив соответствующие классы и вызвав соответствующие функции-хуки в определенном порядке:</p>
+<ul>
+<li>
+<p>Когда <code>show</code> примет значение <code>false</code>, Vue:</p>
+<ol>
+<li>Вызовет хук <code>beforeLeave</code>;</li>
+<li>Применит класс <code>v-leave</code> к элементу, инициировав тем самым CSS-переход;</li>
+<li>Вызовет хук <code>leave</code>;</li>
+<li>Дождется окончания CSS-перехода (обозначается событием <code>transitionend</code>);</li>
+<li>Уберет элемент из дерева DOM, и отменит класс <code>v-leave</code>;</li>
+<li>Вызовет хук <code>afterLeave</code>.</li>
+</ol>
+</li>
+<li>
+<p>Когда <code>show</code> примет значение <code>true</code>, Vue:</p>
+<ol>
+<li>Вызовет хук <code>beforeEnter</code>;</li>
+<li>Применит класс <code>v-enter</code> к элементу;</li>
+<li>Вставит элемент в дерево DOM;</li>
+<li>Вызовет хук <code>enter</code>;</li>
+<li>Спровоцирует <abbr title="CSS layout">перерасчет стилей</abbr>, чтобы класс <code>v-enter</code> фактически применился, затем уберет класс <code>v-enter</code> чтобы инициировать CSS-переход элемента в обычное состояние;</li>
+<li>Дождется окончания CSS-перехода;</li>
+<li>Вызовет хук <code>afterEnter</code>.</li>
+</ol>
+</li>
+</ul>
+<p>В дополнение к вышеприведенным хукам, если элемент убрать до того, как анимация его появления завершится, то будет вызван хук <code>enterCancelled</code>, в котором необходимо освободить зарезервированные в хуке <code>enter</code> ресурсы (например таймеры). Аналогично для прерванной анимации исчезания существует хук <code>leaveCanceled</code>.</p>
+<p>Все вышеприведенные хуки вызываются в контексте соответствующего экземпляра Vue. Если анимируемый элемент является корневым элементом экземпляра, то this внутри хука будет указывает на этот экземпляр. В противном случае, this будет указывать на экземпляр, являющийся владельцем элемента с директивой.</p>
+<p>Наконец, хуки <code>enter</code> и <code>leave</code> могут дополнительно принимать <abbr title="callback">функцию обратного вызова</abbr> вторым аргументом. Если хук принимает второй аргумент, то это подсказывает Vue, что вы намерены самостоятельно управлять анимацией перехода, и вместо ожидания события <code>transitionend</code> Vue будет ожидать вызова этой функции. Например:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">enter: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// второго аргумента нет, окончание перехода</span></span><br><span class="line">  <span class="comment">// определяется событием `transitionend`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>либо</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">enter: <span class="function"><span class="keyword">function</span> (<span class="params">el, done</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// второй аргумент присутствует, переход завершится</span></span><br><span class="line">  <span class="comment">// когда будет вызвана функция `done`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p class="tip">Когда несколько элементов совершают переход одновременно, Vue совершает только один перерасчет стилей.</p>
+<h2 id="css-анимации">CSS Анимации</h2>
+<p>CSS-анимации применяются почти так же, как CSS-переходы. Разница лишь в том, что класс <code>v-enter</code> отменяется не сразу после вставки элемента в DOM дерево, а по событию <code>animationend</code>.</p>
+<p><strong>Пример:</strong> (браузерные префиксы опущены для краткости)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">span</span> <span class="attribute">v-show</span>=<span class="value">"show"</span> <span class="attribute">v-transition</span>=<span class="value">"bounce"</span>&gt;</span>Вот он я!<span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.bounce-enter</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">animation</span>:<span class="value"> bounce-in .<span class="number">5s</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.bounce-leave</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">animation</span>:<span class="value"> bounce-out .<span class="number">5s</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="at_rule">@<span class="keyword">keyframes</span> bounce-in </span>&#123;</span><br><span class="line">  0% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">scale</span>(<span class="number">0</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">  50% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">scale</span>(<span class="number">1.5</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">  100% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">scale</span>(<span class="number">1</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="at_rule">@<span class="keyword">keyframes</span> bounce-out </span>&#123;</span><br><span class="line">  0% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">scale</span>(<span class="number">1</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">  50% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">scale</span>(<span class="number">1.5</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">  100% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">scale</span>(<span class="number">0</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div id="anim" class="demo"><span v-show="show" v-transition="bounce">Вот он я!</span><br><button v-on="click: show = !show">Показать/скрыть</button></div>
+<style>
+  .bounce-enter {
+    -webkit-animation: bounce-in .5s;
+    animation: bounce-in .5s;
+  }
+  .bounce-leave {
+    -webkit-animation: bounce-out .5s;
+    animation: bounce-out .5s;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+      -webkit-transform: scale(0);
+    }
+    50% {
+      transform: scale(1.5);
+      -webkit-transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+      -webkit-transform: scale(1);
+    }
+  }
+  @keyframes bounce-out {
+    0% {
+      transform: scale(1);
+      -webkit-transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+      -webkit-transform: scale(1.5);
+    }
+    100% {
+      transform: scale(0);
+      -webkit-transform: scale(0);
+    }
+  }
+  @-webkit-keyframes bounce-in {
+    0% {
+      -webkit-transform: scale(0);
+    }
+    50% {
+      -webkit-transform: scale(1.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+    }
+  }
+  @-webkit-keyframes bounce-out {
+    0% {
+      -webkit-transform: scale(1);
+    }
+    50% {
+      -webkit-transform: scale(1.5);
+    }
+    100% {
+      -webkit-transform: scale(0);
+    }
+  }
+</style>
+<script>
+new Vue({
+  el: '#anim',
+  data: { show: true }
+})
+</script>
+<h2 id="чистые-javascript-переходы"><abbr title="JavaScript Only Transitions">Чистые JavaScript-переходы</abbr></h2>
+<p>При желании можно ограничиться лишь JavaScript-переходами и не определять никаких классов. При таком подходе второй аргумент <code>done</code> для хуков <code>enter</code> и <code>leave</code> обязателен, иначе они будут вызваны синхронно и переход закончится немедленно. В приведенном ниже примере пользовательский переход реализован с помощью jQuery, и регистрируется глобально для всего приложения.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Vue.transition(<span class="string">'fade'</span>, &#123;</span><br><span class="line">  enter: <span class="function"><span class="keyword">function</span> (<span class="params">el, done</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// элемент уже вставлен в дерево DOM,</span></span><br><span class="line">    <span class="comment">// нужно вызвать `done` когда анимация завершится</span></span><br><span class="line">    $(el)</span><br><span class="line">      .css(<span class="string">'opacity'</span>, <span class="number">0</span>)</span><br><span class="line">      .animate(&#123; opacity: <span class="number">1</span> &#125;, <span class="number">1000</span>, done)</span><br><span class="line">  &#125;,</span><br><span class="line">  enterCancelled: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    $(el).stop()</span><br><span class="line">  &#125;,</span><br><span class="line">  leave: <span class="function"><span class="keyword">function</span> (<span class="params">el, done</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// аналогично `enter`</span></span><br><span class="line">    $(el).animate(&#123; opacity: <span class="number">0</span> &#125;, <span class="number">1000</span>, done)</span><br><span class="line">  &#125;,</span><br><span class="line">  leaveCancelled: <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">    $(el).stop()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>После регистрации такой JavaScript-переход можно использовать указав его имя в <code>v-transition</code>.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">v-transition</span>=<span class="value">"fade"</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p class="tip">Если к элементу, использующему чистый JavaScript-переход, тем или иным образом применяется CSS-переход или CSS-анимация, то это может помешать правильной работе перехода. Чтобы избежать подобных проблем можно указать `css: false` в описании JavaScript-перехода. Тогда Vue не будет пытаться найти подходящий CSS-переход.</p>
+<h2 id="поочередная-анимация"><abbr title="Staggering animation">Поочередная анимация</abbr></h2>
+<p>Используя <code>v-transition</code> вместе с <code>v-repeat</code> можно добиться эффекта поочередной анимации. Для этого нужно добавить атрибут <code>stagger</code>, <code>enter-stagger</code> или <code>leave-stagger</code> к элементу, совершающему переход.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">v-repeat</span>=<span class="value">"list"</span> <span class="attribute">v-transition</span> <span class="attribute">stagger</span>=<span class="value">"100"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Либо можно описать хук <code>stagger</code>, <code>enterStagger</code> или <code>leaveStagger</code>, это дает больше свободы.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vue.transition(<span class="string">'stagger'</span>, &#123;</span><br><span class="line">  stagger: <span class="function"><span class="keyword">function</span> (<span class="params">index</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// увеличивать задержку на 50мс для каждого</span></span><br><span class="line">    <span class="comment">// последующего элемента, но не более 300мс</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.min(<span class="number">300</span>, index * <span class="number">50</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Пример:</p>
+<p><iframe width="100%" height="200" style="margin-left:10px" src="http://jsfiddle.net/yyx990803/ujqrsu6w/embedded/result,html,js,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe></p>
+<p>Далее: <a href="/guide/application.html">Building Larger Apps</a>.</p>
+
+    <div class="footer">Нашли ошибку или хотите помочь с переводом документации? <a href="https://github.com/vuejs-ru/vuejs.org" target="_blank">Создайте форк на Github</a>!</div>
+</div>
+
+                
+            </div>
+            <script src="/vuejs.org/js/smooth-scroll.min.js"></script>
+            <script src="/vuejs.org/js/common.js"></script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

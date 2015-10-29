@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Performance Comparisons - vue.js</title>
+        <base href="/vuejs.org/" >
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Source+Code+Pro|Dosis:300,500' rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/vuejs.org/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = ""
+        </script>
+        <link rel="stylesheet" href="/vuejs.org/css/page.css" type="text/css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/vuejs.org/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/vuejs.org/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+</div>
+
+            <div id="main">
+                
+                    
+<div class="content ">
+    <h1>Performance Comparisons</h1>
+    <div id="ad">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+    </div>
+    <h2 id="todomvc-benchmark">TodoMVC Benchmark</h2>
+<blockquote>
+<p><em>Last Updated: 2014-10-12</em></p>
+</blockquote>
+<p>Looking for the TodoMVC Benchmark? It’s been removed because after discussion with some other framework authors we have agreed that:</p>
+<ol>
+<li>
+<p>The original intention of these benchmarks were for comparing Browser performance rather than that of frameworks. The “synchrorously trigger an action xxx times” test routine doesn’t reflect meaningful real world user actions.</p>
+</li>
+<li>
+<p>Due to internal implementation differences, frameworks that uses async rendering (e.g. Vue, Om, Mercury) gains the advantage by skipping part of the calculations that happened in the same event loop. The real world user experience doesn’t demonstrate such dramatic difference.</p>
+</li>
+<li>
+<p>Overall this benchmark suite gave rise to more controversy than constructive insights, so it’s been removed and I’d be happy to replace it with a more meaningful way to measure front-end performance.</p>
+</li>
+</ol>
+
+    <div class="footer">Нашли ошибку или хотите помочь с переводом документации? <a href="https://github.com/vuejs-ru/vuejs.org" target="_blank">Создайте форк на Github</a>!</div>
+</div>
+
+                
+            </div>
+            <script src="/vuejs.org/js/smooth-scroll.min.js"></script>
+            <script src="/vuejs.org/js/common.js"></script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

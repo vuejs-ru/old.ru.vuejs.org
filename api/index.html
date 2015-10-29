@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Обзор - vue.js</title>
+        <base href="/vuejs.org/" >
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Source+Code+Pro|Dosis:300,500' rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/vuejs.org/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = "api"
+        </script>
+        <link rel="stylesheet" href="/vuejs.org/css/page.css" type="text/css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/vuejs.org/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/vuejs.org/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link current">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+</div>
+
+            <div id="main">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link current">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+    <div class="list">
+        
+        <h2>Документация API</h2>
+        
+        <ul class="menu-root">
+            
+                <li>
+                    <a href="/vuejs.org/api/index.html" class="sidebar-link current">Обзор</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/options.html" class="sidebar-link">Component Options</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/instance-properties.html" class="sidebar-link">Instance Properties</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/instance-methods.html" class="sidebar-link">Instance Methods</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/global-api.html" class="sidebar-link">Global API</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/directives.html" class="sidebar-link">Directives</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/filters.html" class="sidebar-link">Filters</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/elements.html" class="sidebar-link new">Special Elements</a>
+                </li>
+            
+            <li><a href="http://legacy.vuejs.org">Документация для v.0.11</a></li>
+            <li style="margin:10px 0 3px">
+              <script data-gittip-username="yyx990803"
+                data-gittip-widget="button"
+                src="//gttp.co/v1.js"></script>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="content api with-sidebar">
+    <h1>Обзор</h1>
+    <div id="ad">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+    </div>
+    <h2 id="конструктор-vue">Конструктор Vue</h2>
+<p>Конструктор <code>Vue</code> - это ядро Vue.js. Это функция конструктор, которая позволяет создавать новые экземпляры Vue. Создать экземпляр Vue достаточно просто:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123; <span class="comment">/* options */</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p>При создаении экземпляра Vue, необходимо передать объект с опциями, который может включать информацию о DOM элементе, дата объекте, методах примесей, коллбеков жизненного цикла и т.д. Полный список <a href="/api/options.html">Опций Компоннета</a>.</p>
+<p>Каждый экземпляр Vue это, по существу, Модель Представления (отсюда и имя переменной <code>vm</code>, которое вы увидите в документации). К ней есть соответсвующий элемент DOM <code>$el</code>, который является аналогом V в MVVM. Также есть соответсвующий объект JavaScript <code>$data</code>, который отвечает за M в MVVM. Изменения в M приводят к обновлению в V. Для двусторонней привязки данных, ввод данных пользователем в V приводит к изменению в M. Для более детальной информации о том, какие свойства доступны в экземпляре Vue, смотрите <a href="/api/instance-properties.html">Свойства Экземпляра</a>.</p>
+<p>Каждый экземпляр Vue также имеет набор <a href="/api/instance-methods.html">Методов Экземпляра</a>, которые покрывают отслеживание изменения данных, обмен событиями и манипуляцию DOM.</p>
+<p>Конструктор <code>Vue</code>, сам по себе, также открывает доступ к <a href="/api/global-api.html">Глобальному API</a>, который позволяет расширять класс <code>Vue</code>, менять глобальные настройки и регистрировать глобальные пользовательские дополнения такие как компоненты, директивы, фильтры и т.д.</p>
+<h2 id="инициализация">Инициализация</h2>
+<p>Если свойство <code>el</code> было предоставлено на этапе инициализации, экземпляр Vue сразу же перейдёт в фазу компиляции. В обратном случае, он будет ожидать вызова метода <code>vm.$mount()</code>, перед тем как начать компиляцию. В фазе копиляции, Vue проверяет элементы DOM, собирает все встреченные директивы и связывает данные и DOM с этими директивами. После связывания эти DOM ноды управляются экземпляром Vue. DOM нода может быть под управлением только одного экземпляра Vue и не должна быть скопмилирована более одного раза.</p>
+<h2 id="проксирование-данных">Проксирование данных</h2>
+<p>Экземпляр Vue проксирует доступ к своему объекту <code>$data</code>, таким образом, если у вас есть <code>vm.$data.msg</code> можно также получить доступ к нему через <code>vm.msg</code>. Это может выглядеть немного “магически”, но абсолютно на ваше усмотрение. Вы можете использовать более явный доступ к данным через <code>vm.$data.msg</code>. Однако, важно понимать разницу между <code>vm</code> и <code>vm.$data</code>, т.к. первый нельзя отслеживать в других экземплярах Vue как данные.</p>
+<p>Также стоит отметить, что объект данных не обязательно принадлежит только лишь одному экземпляру Vue - множество Моделей Представления могут отслеживать один и тот же объект данных, как напрямую объект <code>$data</code> целиком, так и вложенные объекты. Это удобно, когда множество компонент должны получать доступ к общему глобальному объекту.</p>
+
+    <div class="footer">Нашли ошибку или хотите помочь с переводом документации? <a href="https://github.com/vuejs-ru/vuejs.org" target="_blank">Создайте форк на Github</a>!</div>
+</div>
+
+                
+            </div>
+            <script src="/vuejs.org/js/smooth-scroll.min.js"></script>
+            <script src="/vuejs.org/js/common.js"></script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

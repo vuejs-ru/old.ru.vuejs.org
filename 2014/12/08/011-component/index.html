@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>0.11 Component Tips - vue.js</title>
+        <base href="/vuejs.org/" >
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Source+Code+Pro|Dosis:300,500' rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/vuejs.org/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = ""
+        </script>
+        <link rel="stylesheet" href="/vuejs.org/css/page.css" type="text/css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/vuejs.org/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/vuejs.org/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link current">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+</div>
+
+            <div id="main">
+                
+                    <div class="sidebar blog">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link current">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+    <div class="list">
+        <h2>Recent Posts</h2>
+        <ul>
+        
+            <li>
+                <a href="/2015/06/11/012-release/" class="sidebar-link">Vue.js 0.12 released!</a>
+            </li>
+        
+            <li>
+                <a href="/2014/12/08/011-component/" class="sidebar-link current">0.11 Component Tips</a>
+            </li>
+        
+            <li>
+                <a href="/2014/11/09/vue-011-release/" class="sidebar-link">Vue.js 0.11 released!</a>
+            </li>
+        
+            <li>
+                <a href="/2014/07/29/vue-next/" class="sidebar-link">Vue.js 0.10.6, and what's next</a>
+            </li>
+        
+            <li>
+                <a href="/2014/03/22/vuejs-010-release/" class="sidebar-link">Vue.js 0.10 is here!</a>
+            </li>
+        
+        <li style="margin:10px 0 3px">
+          <script data-gittip-username="yyx990803"
+            data-gittip-widget="button"
+            src="//gttp.co/v1.js"></script>
+        </li>
+        </ul>
+    </div>
+</div>
+<div class="content blog">
+    <h1>0.11 Component Tips</h1>
+    <div id="ad">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+    </div>
+    <h4>Dec 8, 2014</h4>
+    <p class="tip">Note: this post contains information for the outdated 0.11 version. Please refer to the [0.12 release notes](https://github.com/yyx990803/vue/releases) for the changes in the API.</p>
+<p>The release of 0.11 introduced <a href="https://github.com/yyx990803/vue/blob/master/changes.md" target="_blank" rel="external">many changes</a>, but the most important one is how the new component scope works. Previously in 0.10.x, components have inherited scope by default. That means in a child component template you can reference parent scope properties. This often leads to tightly-coupled components, where a child component assumes knowledge of what properties are present in the parent scope. It is also possible to accidentally refer to a parent scope property in a child component.</p>
+<a id="more"></a>
+<h3 id="isolated-scope-and-data-passing">Isolated Scope and Data Passing</h3>
+<p>Starting in 0.11, all child components have isolated scope by default, and the recommended way to control component data access is via <a href="/guide/components.html#Explicit_Data_Passing">Explicit Data Passing</a> using <a href="/api/directives.html#v-with"><code>v-with</code></a> or <a href="/api/options.html#paramAttributes"><code>paramAttributes</code></a>.</p>
+<p><code>paramAttributes</code> enables us to write Web Component style templates:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>, &#123;</span><br><span class="line">  paramAttributes: [<span class="string">'params'</span>],</span><br><span class="line">  compiled: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.params) <span class="comment">// passed from parent</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">my-component</span> <span class="attribute">params</span>=<span class="value">"&#123;&#123;params&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">my-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="where-does-it-belong">Where Does It Belong?</h3>
+<p>Previously in 0.10, all directives on a component’s container element are compiled in the child component’s scope. Because it inherited parent scope, this worked in most situations. Starting in 0.11.1, we want to provide a cleaner separation between component scopes. The rule of thumbs is: if something appears in the parent template, it will be compiled in parent scope; if it appears in child template, it will be compiled in child scope. For example:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- parent template --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">v-component</span>=<span class="value">"child"</span> <span class="attribute">v-on</span>=<span class="value">"click:onParentClick"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">p</span>&gt;</span>&#123;&#123;parentMessage&#125;&#125;<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- child template, with replace: true --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">v-on</span>=<span class="value">"click:onChildClick"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">h1</span>&gt;</span>&#123;&#123;childMessage&#125;&#125;<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">content</span>&gt;</span><span class="tag">&lt;/<span class="title">content</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Everything in the parent template will be compiled in the parent’s scope, including the content that’s going to be inserted into the child component.</p>
+<p>The only exception to the rule is <code>v-with</code> (and <code>paramAttributes</code> which compiles down to <code>v-with</code>), which works in both places - so you don’t need to worry about it too much.</p>
+<h3 id="cleaner-event-communication">Cleaner Event Communication</h3>
+<p>Previously the standard way for a child component to communicate to its parent is via dispatching events. However, with this approach, the event listeners on the parent component are not guaranteed to be listening on the desired child component only. It’s also possible to trigger undesired listners further up the chain if we do not cancel the event.</p>
+<p>The most common use case is for a parent to react to the events from a specific, direct child component. So in 0.11.4, <a href="/api/directives.html#v-events">a new directive <code>v-events</code></a> has been introduced to enable exactly this behavior.</p>
+<p>0.11.4 has already been released, go try it out!</p>
+
+</div>
+                
+            </div>
+            <script src="/vuejs.org/js/smooth-scroll.min.js"></script>
+            <script src="/vuejs.org/js/common.js"></script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

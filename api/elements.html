@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Special Elements - vue.js</title>
+        <base href="/vuejs.org/" >
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Source+Code+Pro|Dosis:300,500' rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/vuejs.org/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = "api"
+        </script>
+        <link rel="stylesheet" href="/vuejs.org/css/page.css" type="text/css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/vuejs.org/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/vuejs.org/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link current">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+</div>
+
+            <div id="main">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link current">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+    <div class="list">
+        
+        <h2>Документация API</h2>
+        
+        <ul class="menu-root">
+            
+                <li>
+                    <a href="/vuejs.org/api/index.html" class="sidebar-link">Обзор</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/options.html" class="sidebar-link">Component Options</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/instance-properties.html" class="sidebar-link">Instance Properties</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/instance-methods.html" class="sidebar-link">Instance Methods</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/global-api.html" class="sidebar-link">Global API</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/directives.html" class="sidebar-link">Directives</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/filters.html" class="sidebar-link">Filters</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/api/elements.html" class="sidebar-link current new">Special Elements</a>
+                </li>
+            
+            <li><a href="http://legacy.vuejs.org">Документация для v.0.11</a></li>
+            <li style="margin:10px 0 3px">
+              <script data-gittip-username="yyx990803"
+                data-gittip-widget="button"
+                src="//gttp.co/v1.js"></script>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="content api with-sidebar">
+    <h1>Special Elements</h1>
+    <div id="ad">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+    </div>
+    <blockquote>
+<p>The following is a list of abstract elements that serve special purposes in Vue.js templates.</p>
+</blockquote>
+<h3 id="component">component</h3>
+<p>Alternative syntax for invoking components. Primarily used for dynamic components with the <code>is</code> attribute:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- a dynamic component controlled by --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- the `componentId` property on the vm --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">component</span> <span class="attribute">is</span>=<span class="value">"&#123;&#123;componentId&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="content">content</h3>
+<p><code>&lt;content&gt;</code> tags serve as content insertion outlets in component templates. The <code>&lt;content&gt;</code> element itself will be replaced. It optionally accepts a <code>select</code> attribute, which should be a valid CSS selector to be used to match a subset of inserted content to be displayed:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- only display &lt;li&gt;'s in the inserted content --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">content</span> <span class="attribute">select</span>=<span class="value">"li"</span>&gt;</span><span class="tag">&lt;/<span class="title">content</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>The select attribute can also contain mustache expressions. For more details, see <a href="/guide/components.html#Content_Insertion">Content Insertion</a>.</p>
+<h3 id="partial">partial</h3>
+<p><code>&lt;partial&gt;</code> tags serve as outlets for registered partials. Partial contents are also compiled by Vue when inserted. The <code>&lt;partial&gt;</code> element itself will be replaced. It requires a <code>name</code> attribute to be provided. For example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// registering a partial</span></span><br><span class="line">Vue.partial(<span class="string">'my-partial'</span>, <span class="string">'&lt;p&gt;This is a partial! &#123;&#123;msg&#125;&#125;&lt;/p&gt;'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- a static partial --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">partial</span> <span class="attribute">name</span>=<span class="value">"my-partial"</span>&gt;</span><span class="tag">&lt;/<span class="title">partial</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- a dynamic partial --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">partial</span> <span class="attribute">name</span>=<span class="value">"&#123;&#123;partialId&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">partial</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+    <div class="footer">Нашли ошибку или хотите помочь с переводом документации? <a href="https://github.com/vuejs-ru/vuejs.org" target="_blank">Создайте форк на Github</a>!</div>
+</div>
+
+                
+            </div>
+            <script src="/vuejs.org/js/smooth-scroll.min.js"></script>
+            <script src="/vuejs.org/js/common.js"></script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

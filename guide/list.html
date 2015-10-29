@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Отображение списков - vue.js</title>
+        <base href="/vuejs.org/" >
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Source+Code+Pro|Dosis:300,500' rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/vuejs.org/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = "guide"
+        </script>
+        <link rel="stylesheet" href="/vuejs.org/css/page.css" type="text/css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/vuejs.org/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/vuejs.org/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link current">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+</div>
+
+            <div id="main">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link current">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+    <div class="list">
+        
+        <h2>Руководство</h2>
+        
+        <ul class="menu-root">
+            
+                <li>
+                    <a href="/vuejs.org/guide/installation.html" class="sidebar-link">Установка</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/index.html" class="sidebar-link">Обзор</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/directives.html" class="sidebar-link">Директивы</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/filters.html" class="sidebar-link">Фильтры</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/list.html" class="sidebar-link current">Отображение списков</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/events.html" class="sidebar-link">Обработка Событий</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/forms.html" class="sidebar-link">Управление Формами</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/computed.html" class="sidebar-link">Вычисляемые свойства</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/custom-directive.html" class="sidebar-link">Пользовательские директивы</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/custom-filter.html" class="sidebar-link">Пользовательские фильтры</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/components.html" class="sidebar-link">Component System</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/transitions.html" class="sidebar-link">Анимированные переходы</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/application.html" class="sidebar-link">Создаём Большие Приложения</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/best-practices.html" class="sidebar-link new">Tips & Best Practices</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/faq.html" class="sidebar-link">Common FAQs</a>
+                </li>
+            
+            <li><a href="http://legacy.vuejs.org">Документация для v.0.11</a></li>
+            <li style="margin:10px 0 3px">
+              <script data-gittip-username="yyx990803"
+                data-gittip-widget="button"
+                src="//gttp.co/v1.js"></script>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="content guide with-sidebar">
+    <h1>Отображение списков</h1>
+    <div id="ad">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+    </div>
+    <p>Вы можете использовать директиву <code>v-repeat</code> для многократного вывода шаблона с массивом объектов в качестве модели представления. Для каждого объекта в массиве, директива создаст дочерний экземпляр Vue, используя объект в качестве свойства <code>$data</code>. Экземпляры наследуют данные родителя, таким образом, вы можете осуществлять доступ к данным как текущего так и родительского экземпляра. В дополнение, вы получаете доступ к свойству <code>$index</code>, которое является индексом текущего объекта в массиве.</p>
+<p><strong>Пример:</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"demo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">v-repeat</span>=<span class="value">"items"</span> <span class="attribute">class</span>=<span class="value">"item-&#123;&#123;$index&#125;&#125;"</span>&gt;</span></span><br><span class="line">    &#123;&#123;$index&#125;&#125; - &#123;&#123;parentMsg&#125;&#125; &#123;&#123;childMsg&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> demo = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#demo'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    parentMsg: <span class="string">'Hello'</span>,</span><br><span class="line">    items: [</span><br><span class="line">      &#123; childMsg: <span class="string">'Foo'</span> &#125;,</span><br><span class="line">      &#123; childMsg: <span class="string">'Bar'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>Результат:</strong></p>
+<ul id="demo"><li v-repeat="items" class="item-{&#123;$index&#125;}">{&#123;$index&#125;} - {&#123;parentMsg&#125;} {&#123;childMsg&#125;}</li></ul>
+<script>
+var demo = new Vue({
+  el: '#demo',
+  data: {
+    parentMsg: 'Hello',
+    items: [
+      { childMsg: 'Foo' },
+      { childMsg: 'Bar' }
+    ]
+  }
+})
+</script>
+<h2 id="повторение-блоков-фрагментов">Повторение Блоков/Фрагментов</h2>
+<p>Иногда может потребоваться вывести несколько узлов – в этом случае, вы можете использовать тег <code>&lt;template&gt;</code>, и обернуть в него нужный блок. Тег <code>&lt;template&gt;</code> в данном случае служит для семантической обёртки блока. Например:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">template</span> <span class="attribute">v-repeat</span>=<span class="value">"list"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"divider"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="массивы-примитивных-типов">Массивы Примитивных Типов</h2>
+<p>Для массивов содержащих примитивные значения, вы можете получить доступ к значению с помощью <code>$value</code>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"tags"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">v-repeat</span>=<span class="value">"tags"</span>&gt;</span></span><br><span class="line">    &#123;&#123;$value&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#tags'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    tags: [<span class="string">'JavaScript'</span>, <span class="string">'MVVM'</span>, <span class="string">'Vue.js'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>Результат:</strong></p>
+<ul id="tags" class="demo"><li v-repeat="tags">{&#123;$value&#125;}</li></ul>
+<script>
+new Vue({
+  el: '#tags',
+  data: {
+    tags: ['JavaScript', 'MVVM', 'Vue.js']
+  }
+})
+</script>
+<h2 id="использование-псевдонима">Использование Псевдонима</h2>
+<p>Иногда требуется получить явный доступ к переменной вместо использования родительского контекста. Вы можете добиться подобного поведения, предоставив псевдоним текущего элемента в качестве аргумента директивы <code>v-repeat</code> и использовать его как идентификатор текущего итерируемого объекта:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"users"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">v-repeat</span>=<span class="value">"user in users"</span>&gt;</span></span><br><span class="line">    &#123;&#123;user.name&#125;&#125; - &#123;&#123;user.email&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#users'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    users: [</span><br><span class="line">      &#123; name: <span class="string">'Foo Bar'</span>, email: <span class="string">'foo@bar.com'</span> &#125;,</span><br><span class="line">      &#123; name: <span class="string">'John Doh'</span>, email: <span class="string">'john@doh.com'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>Результат:</strong></p>
+<ul id="users" class="demo"><li v-repeat="user: users">{&#123;user.name&#125;} - {&#123;user.email&#125;}</li></ul>
+<script>
+new Vue({
+  el: '#users',
+  data: {
+    users: [
+      { name: 'Foo Bar', email: 'foo@bar.com' },
+      { name: 'John Doh', email: 'john@doh.com' }
+    ]
+  }
+})
+</script>
+<p class="tip">Синтаксис `user in users` доступен только с версии Vue 0.12.8 и выше. В старых версиях необходимо использовать синтаксис `user : users`.</p>
+<p class="tip">Использование идентификатора вместе с `v-repeat` положительно влияет на читабельность шаблонов и производительность.</p>
+<h2 id="модифицирующие-методы">Модифицирующие методы</h2>
+<p>Vue.js перехватывает модифицирующие методы массива который находится под наблюдением (<code>push()</code>, <code>pop()</code>, <code>shift()</code>, <code>unshift()</code>, <code>splice()</code>, <code>sort()</code> и <code>reverse()</code>), таким образом они также будут вызывать обновления Представления.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// DOM представление будет обновлено</span></span><br><span class="line">demo.items.unshift(&#123; childMsg: <span class="string">'Baz'</span> &#125;)</span><br><span class="line">demo.items.pop()</span><br></pre></td></tr></table></figure>
+<h2 id="дополнительные-методы">Дополнительные Методы</h2>
+<p>Vue.js снабжает массивы двумя удобными методами: <code>$set()</code> и <code>$remove()</code>.</p>
+<p>Вы должны избегать устанавливать значения элементов массива по индексу, так как эти изменения не будут подхваченны Vue.js. Вместо этого используйте дополнительный метод <code>$set()</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// тоже что и `demo.items[0] = ...` но будет выполнено обновление</span></span><br><span class="line">demo.items.$set(<span class="number">0</span>, &#123; childMsg: <span class="string">'Changed!'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>$remove()</code> является синтаксическим сахаром для метода <code>splice()</code>. Он удаляет элемент с заданным индексом. Если аргумент не является числом, <code>$remove()</code> удалит первое вхождение найденное в массиве.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// удалить элемент с индексом 0</span></span><br><span class="line">demo.items.$remove(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="замена-массива">Замена Массива</h2>
+<p>Когда вы используете методы, которые не вызывают изменение переменной, такие как <code>filter()</code>, <code>concat()</code> или <code>slice()</code>, возвращаемый массив будет другим экземпляром. В таком случае, вы можете просто заменить старый массив новым:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">demo.items = demo.items.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item.childMsg.match(<span class="regexp">/Hello/</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Можно подумать, что данное действие уничтожит текущий DOM и построит новый. Но не волнуйтесь – Vue.js распознает элементы массива, которые уже были привязаны к экземплярам Vue и будет использовать их если это возможно.</p>
+<h2 id="использование-track-by">Использование <code>track-by</code></h2>
+<p>В некоторых случаях, вам может понадобиться заменить текущий массив массивом с абсолютно другими объектами, например после вызова метода API. Поскольку по-умолчанию <code>v-repeat</code> определяет возможность переиспользования уже имеющихся экземпляров и их DOM элементов, это может вызвать полное перепостроение списка элементов. Но если каждый из объектов массива имеет уникальный идентификатор, вы можете использовать <code>track-by</code> чтобы подсказать Vue.js какие из этих элементов можно использовать повторно.</p>
+<p>К примеру, если имеется массив:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  items: [</span><br><span class="line">    &#123; _uid: <span class="string">'88f869d'</span>, ... &#125;,</span><br><span class="line">    &#123; _uid: <span class="string">'7496c10'</span>, ... &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Вы можете использовать <code>track-by</code> так:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">v-repeat</span>=<span class="value">"items"</span> <span class="attribute">track-by</span>=<span class="value">"_uid"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- content --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Позже, когда вы замените массив <code>items</code> на новый, и Vue.js натолкнётся на объект с <code>_uid: '88f869d'</code>, будет использован старый экземпляр Vue для этого объекта с таким же <code>_uid</code>.</p>
+<p>Если объекты не имеют уникального ключа, вы можете использовать <code>track-by=&quot;$index&quot;</code>. Такое применение требует осторожности, потому что вместо перемещения дочерних экземпляров и элементов DOM, Vue будет просто переиспользовать их в таком порядке, в каком они были созданы. Избегайте использования <code>track-by=&quot;$index&quot;</code> в двух случаях: когда требуется вывести блок содержащий элементы формы; или когда вы используете для вывода компоненты с изменяемым состоянием и передачей данных из перебираемого массива.</p>
+<p class="tip">Правильное использование `track-by` может значительно увеличить производительность при повторном рендеринге больших списков `v-repeat` с использованием новых данных.</p>
+<h2 id="итерация-по-свойствам-объекта">Итерация по Свойствам Объекта</h2>
+<p>Вы можете также использовать <code>v-repeat</code> для перебора свойств объекта. Каждый экземпляр в таком случае будет иметь специальное свойство <code>$key</code>. Для простых значений, вы, как и раньше, можете использовать <code>$value</code> для того чтобы получить значение ключа.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"repeat-object"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">v-repeat</span>=<span class="value">"primitiveValues"</span>&gt;</span>&#123;&#123;$key&#125;&#125; : &#123;&#123;$value&#125;&#125;<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>===<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">v-repeat</span>=<span class="value">"objectValues"</span>&gt;</span>&#123;&#123;$key&#125;&#125; : &#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#repeat-object'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    primitiveValues: &#123;</span><br><span class="line">      FirstName: <span class="string">'John'</span>,</span><br><span class="line">      LastName: <span class="string">'Doe'</span>,</span><br><span class="line">      Age: <span class="number">30</span></span><br><span class="line">    &#125;,</span><br><span class="line">    objectValues: &#123;</span><br><span class="line">      one: &#123;</span><br><span class="line">        msg: <span class="string">'Hello'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      two: &#123;</span><br><span class="line">        msg: <span class="string">'Bye'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>Результат:</strong></p>
+<ul id="repeat-object" class="demo"><li v-repeat="primitiveValues">{&#123;$key&#125;} : {&#123;$value&#125;}</li><li>===</li><li v-repeat="objectValues">{&#123;$key&#125;} : {&#123;msg&#125;}</li></ul>
+<script>
+new Vue({
+  el: '#repeat-object',
+  data: {
+    primitiveValues: {
+      FirstName: 'John',
+      LastName: 'Doe',
+      Age: 30
+    },
+    objectValues: {
+      one: {
+        msg: 'Hello'
+      },
+      two: {
+        msg: 'Bye'
+      }
+    }
+  }
+})
+</script>
+<p class="tip">В стандарте ECMAScript 5 нет способа отловить добавление или удаление свойство объекта. Для обхода этого ограничения объекты, находящиеся под наблюдением Vue, наделены тремя методами: `$add(key, value)`, `$set(key, value)` и `$delete(key)`. Данные методы могут быть использованы для добавления / удаления свойств объектов с последующим изменением Представления. Разница между `$add` и `$set` заключается в том, что `$add` добавит ключ только в том случае, когда его не существует, так вызов `obj.$add(key)` не может изменить текущее значение ключа на `undefined`.</p>
+<h2 id="итерация-по-интервалу">Итерация по Интервалу</h2>
+<p><code>v-repeat</code> также может принимать целое число в качестве аргумента. В таком случае, шаблон будет выведен указанное число раз.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"range"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">v-repeat</span>=<span class="value">"val"</span>&gt;</span>Hi! &#123;&#123;$index&#125;&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#range'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    val: <span class="number">3</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>Результат:</strong></p>
+<ul id="range" class="demo"><li v-repeat="val">Hi! {&#123;$index&#125;}</li></ul>
+<script>
+new Vue({
+  el: '#range',
+  data: { val: 3 }
+});
+</script>
+<h2 id="фильтры-массивов">Фильтры Массивов</h2>
+<p>Иногда требуется вывести отфильтрованный или отсортированный массив, не производя при этом изменений в оригинальном массиве. Vue предоставляет два встроенных фильтра для упрощения данной задачи: <code>filterBy</code> и <code>orderBy</code>. Смотрите <a href="/api/filters.html#filterBy">документацию</a> для получения более подробной информации о них.</p>
+<p>Далее: <a href="/guide/events.html">Обработка Событий</a>.</p>
+
+    <div class="footer">Нашли ошибку или хотите помочь с переводом документации? <a href="https://github.com/vuejs-ru/vuejs.org" target="_blank">Создайте форк на Github</a>!</div>
+</div>
+
+                
+            </div>
+            <script src="/vuejs.org/js/smooth-scroll.min.js"></script>
+            <script src="/vuejs.org/js/common.js"></script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>

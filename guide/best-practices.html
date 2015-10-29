@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Tips & Best Practices - vue.js</title>
+        <base href="/vuejs.org/" >
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Source+Code+Pro|Dosis:300,500' rel='stylesheet' type='text/css'>
+        <link rel="icon" href="/vuejs.org/images/logo.png" type="image/x-icon">
+        <script>
+            window.PAGE_TYPE = "guide"
+        </script>
+        <link rel="stylesheet" href="/vuejs.org/css/page.css" type="text/css">
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46852172-1', 'vuejs.org');
+  ga('send', 'pageview');
+</script>
+        <script src="/vuejs.org/js/vue.js"></script>
+    </head>
+    <body>
+        <div id="mobile-bar">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        
+            <div id="header">
+    <a id="logo" href="/">
+        <img src="/vuejs.org/images/logo.png">
+        <span>Vue.js</span>
+    </a>
+    <ul id="nav">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link current">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+</div>
+
+            <div id="main">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query" class="st-default-search-input">
+  </form>
+</li>
+<li><a href="/vuejs.org/guide/" class="nav-link current">Руководство</a></li>
+<li><a href="/vuejs.org/api/" class="nav-link">Документация API</a></li>
+<li><a href="/vuejs.org/examples/" class="nav-link">Примеры</a></li>
+<li><a href="/vuejs.org/blog/" class="nav-link">Блог (en)</a></li>
+<li><a href="https://github.com/yyx990803/vue" target="_blank" class="nav-link">GitHub</a></li>
+
+    </ul>
+    <div class="list">
+        
+        <h2>Руководство</h2>
+        
+        <ul class="menu-root">
+            
+                <li>
+                    <a href="/vuejs.org/guide/installation.html" class="sidebar-link">Установка</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/index.html" class="sidebar-link">Обзор</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/directives.html" class="sidebar-link">Директивы</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/filters.html" class="sidebar-link">Фильтры</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/list.html" class="sidebar-link">Отображение списков</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/events.html" class="sidebar-link">Обработка Событий</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/forms.html" class="sidebar-link">Управление Формами</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/computed.html" class="sidebar-link">Вычисляемые свойства</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/custom-directive.html" class="sidebar-link">Пользовательские директивы</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/custom-filter.html" class="sidebar-link">Пользовательские фильтры</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/components.html" class="sidebar-link">Component System</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/transitions.html" class="sidebar-link">Анимированные переходы</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/application.html" class="sidebar-link">Создаём Большие Приложения</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/best-practices.html" class="sidebar-link current new">Tips & Best Practices</a>
+                </li>
+            
+                <li>
+                    <a href="/vuejs.org/guide/faq.html" class="sidebar-link">Common FAQs</a>
+                </li>
+            
+            <li><a href="http://legacy.vuejs.org">Документация для v.0.11</a></li>
+            <li style="margin:10px 0 3px">
+              <script data-gittip-username="yyx990803"
+                data-gittip-widget="button"
+                src="//gttp.co/v1.js"></script>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="content guide with-sidebar">
+    <h1>Tips & Best Practices</h1>
+    <div id="ad">
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs" id="_carbonads_js"></script>
+    </div>
+    <h2 id="data-initialization">Data Initialization</h2>
+<p>Vue’s data observation model favors deterministic data models. It is recommended to initialize all the data properties that needs to be reactive upfront in the <code>data</code> option. For example, given the following template:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"demo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">v-class</span>=<span class="value">"green: validation.valid"</span>&gt;</span>&#123;&#123;message&#125;&#125;<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">input</span> <span class="attribute">v-model</span>=<span class="value">"message"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>It’s recommended to initialize your data like this instead of an empty object:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#demo'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">''</span>,</span><br><span class="line">    validation: &#123;</span><br><span class="line">      valid: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>The reason for this is that Vue observes data changes by recursively walking the data object and convert existing properties into reactive getters and setters using <code>Object.defineProperty</code>. If a property is not present when the instance is created, Vue will not be able to track it.</p>
+<p>You don’t have to set every single nested property in your data though. It is ok to initialize a field as an empty object, and set it to a new object with nested structures later, because Vue will be able to walk the nested properties of this new object and observe them.</p>
+<h2 id="adding-and-deleting-properties">Adding and Deleting Properties</h2>
+<p>As mentioned above, Vue observes data by converting properties with <code>Object.defineProperty</code>. However, in ECMAScript 5 there is no way to detect when a new property is added to an Object, or when a property is deleted from an Object. To deal with this constraint, observed Objects are augmented with three methods:</p>
+<ul>
+<li><code>obj.$add(key, value)</code></li>
+<li><code>obj.$set(key, value)</code></li>
+<li><code>obj.$delete(key)</code></li>
+</ul>
+<p>These methods can be used to add / delete properties from observed objects while triggering the desired DOM updates. The difference between <code>$add</code> and <code>$set</code> is that <code>$add</code> will return early if the key already exists on the object, so just calling <code>obj.$add(key)</code> won’t overwrite the existing value with <code>undefined</code>.</p>
+<p>A related note is that when you change a data-bound Array directly by setting indices (e.g. <code>arr[1] = value</code>), Vue will not be able to pick up the change. Again, you can use augmented methods to notify Vue.js about those changes. Observerd Arrays are augmented with two methods:</p>
+<ul>
+<li><code>arr.$set(index, value)</code></li>
+<li><code>arr.$remove(index | value)</code></li>
+</ul>
+<p>Vue component instances also have corresponding instance methods:</p>
+<ul>
+<li><code>vm.$get(path)</code></li>
+<li><code>vm.$set(path, value)</code></li>
+<li><code>vm.$add(key, value)</code></li>
+<li><code>vm.$delete(key, value)</code></li>
+</ul>
+<p>Note that <code>vm.$get</code> and <code>vm.$set</code> both accept paths.</p>
+<p class="tip">Despite the existence of these methods, make sure to only add observed fields when necessary. It's helpful to think of the `data` option as the schema for your component state. Explicitly listing possiblely-present properties in the component definition makes it easy to understand what a component may contain when you look at it later.</p>
+<h2 id="understanding-async-updates">Understanding Async Updates</h2>
+<p>It is important to know that by default Vue performs view updates <strong>asynchronously</strong>. Whenever a data change is observed, Vue will open a queue and buffer all the data changes that happens in the same event loop. If the same watcher is triggered multiple times, it will be pushed into the queue only once. Then, in the next event loop “tick”, Vue flushes the queue and performs only the necessary DOM updates. Internally Vue uses <code>MutationObserver</code> if available for the asynchronous queueing and falls back to <code>setTimeout(fn, 0)</code>.</p>
+<p>For example, when you set <code>vm.someData = 'new value'</code>, the DOM will not update immediately. It will update in the next “tick”, when the queue is flushed. This behavior can be tricky when you want to do something that depends on the updated DOM state. Although Vue.js generally encourages developers to think in a “data-driven” way and avoid touching the DOM directly, sometimes you might just want to use that handy jQuery plugin you’ve always been using. In order to wait until Vue.js has finished updating the DOM after a data change, you can use <code>Vue.nextTick(callback)</code> immediately after the data is changed - when the callback is called, the DOM would have been updated. For example:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"example"</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    msg: <span class="string">'123'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.msg = <span class="string">'new message'</span> <span class="comment">// change data</span></span><br><span class="line">vm.$el.textContent === <span class="string">'new message'</span> <span class="comment">// false</span></span><br><span class="line">Vue.nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  vm.$el.textContent === <span class="string">'new message'</span> <span class="comment">// true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>There is also the <code>vm.$nextTick()</code> instance method, which is especially handy inside components, because it doesn’t need global <code>Vue</code> and its callback’s <code>this</code> context will be automatically bound to the current Vue instance:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'example'</span>, &#123;</span><br><span class="line">  template: <span class="string">'&lt;span&gt;&#123;&#123;msg&#125;&#125;&lt;/span&gt;'</span>,</span><br><span class="line">  data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      msg: <span class="string">'not updated'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    updateMessage: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.msg = <span class="string">'updated'</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el.textContent) <span class="comment">// =&gt; 'not updated'</span></span><br><span class="line">      <span class="keyword">this</span>.$nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.$el.textContent) <span class="comment">// =&gt; 'updated'</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="component-scope">Component Scope</h2>
+<p>Every Vue.js component is a separate Vue instance with its own scope. It’s important to understand how scopes work when using components. The rule of thumb is:</p>
+<blockquote>
+<p>If something appears in the parent template, it will be compiled in parent scope; if it appears in child template, it will be compiled in child scope.</p>
+</blockquote>
+<p>A common mistake is trying to bind a directive to a child property/method in the parent template:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"demo"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- does NOT work --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">child-component</span> <span class="attribute">v-on</span>=<span class="value">"click: childMethod"</span>&gt;</span><span class="tag">&lt;/<span class="title">child-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>If you need to bind child-scope directives on a component root node, you should do so in the child component’s own template:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'child-component'</span>, &#123;</span><br><span class="line">  <span class="comment">// this does work, because we are in the right scope</span></span><br><span class="line">  template: <span class="string">'&lt;div v-on="click: childMethod"&gt;Child&lt;/div&gt;'</span>,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    childMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'child method invoked!'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Note this pattern also applies to <code>$index</code> when using a component with <code>v-repeat</code>.</p>
+<p>Similarly, HTML content inside a component container are considered “transclusion content”. They will not be inserted anywhere unless the child template contains at least one <code>&lt;content&gt;&lt;/content&gt;</code> outlet. The inserted contents are also compiled in parent scope:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">child-component</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- compiled in parent scope --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">child-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>You can use the <code>inline-template</code> attribute to indicate you want the content to be compiled in the child scope as the child’s template:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">child-component</span> <span class="attribute">inline-template</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- compiled in child scope --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>&#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">child-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>For more details, see <a href="/guide/components.html#Content_Insertion">Content Insertion</a>.</p>
+<h2 id="communication-between-instances">Communication Between Instances</h2>
+<p>A common pattern for parent-child communication in Vue is passing down a parent method as a callback to the child using <code>props</code>. This allows the communication to be defined inside the template (where composition happens) while keeping the JavaScript implementation details decoupled:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"demo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Child says: &#123;&#123;msg&#125;&#125;<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">child-component</span> <span class="attribute">send-message</span>=<span class="value">"&#123;&#123;onChildMsg&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">child-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#demo'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    msg: <span class="string">''</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    onChildMsg: <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.msg = msg</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'Got it!'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    <span class="string">'child-component'</span>: &#123;</span><br><span class="line">      props: [</span><br><span class="line">        <span class="comment">// you can use prop assertions to ensure the</span></span><br><span class="line">        <span class="comment">// callback prop is indeed a function.</span></span><br><span class="line">        &#123;</span><br><span class="line">          name: <span class="string">'send-message'</span>,</span><br><span class="line">          type: <span class="built_in">Function</span>,</span><br><span class="line">          required: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="comment">// props with hyphens are auto-camelized</span></span><br><span class="line">      template:</span><br><span class="line">        <span class="string">'&lt;button v-on="click:onClick"&gt;Say Yeah!&lt;/button&gt;'</span> +</span><br><span class="line">        <span class="string">'&lt;p&gt;Parent responds: &#123;&#123;response&#125;&#125;&lt;/p&gt;'</span>,</span><br><span class="line">      <span class="comment">// component `data` option must be a function</span></span><br><span class="line">      data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          response: <span class="string">''</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      methods: &#123;</span><br><span class="line">        onClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">this</span>.response = <span class="keyword">this</span>.sendMessage(<span class="string">'Yeah!'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>Result:</strong></p>
+<div id="demo"><p>Child says: {&#123;msg&#125;}</p><child-component send-message="{&#123;onChildMsg&#125;}"></child-component></div>
+<script>
+new Vue({
+  el: '#demo',
+  data: {
+    msg: ''
+  },
+  methods: {
+    onChildMsg: function(msg) {
+      this.msg = msg
+      return 'Got it!'
+    }
+  },
+  components: {
+    'child-component': {
+      props: ['send-message'],
+      data: function () {
+        return {
+          fromParent: ''
+        }
+      },
+      template:
+        '<button v-on="click:onClick">Say Yeah!</button>' +
+        '<p>Parent responds: <span v-text="fromParent"></span></p>',
+      methods: {
+        onClick: function () {
+          this.fromParent = this.sendMessage('Yeah!')
+        }
+      }
+    }
+  }
+})
+</script>
+<p>When you need to communicate across multiple nested components, you can use the <a href="/api/instance-methods.html#Events">Event System</a>. In addition, it is also quite feasible to implement a <a href="https://facebook.github.io/flux/docs/overview.html" target="_blank" rel="external">Flux</a>-like architecture with Vue, which you may want to consider for larger-scale applications.</p>
+<h2 id="fragment-instance">Fragment Instance</h2>
+<p>Starting in 0.12.2, the <code>replace</code> option now defaults to <code>true</code>. This basically means:</p>
+<blockquote>
+<p>Whatever you put in the template will be what ends up rendered in the DOM.</p>
+</blockquote>
+<p>So, if your template contains more than one top-level elements:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'example'</span>, &#123;</span><br><span class="line">  template:</span><br><span class="line">    <span class="string">'&lt;div&gt;A&lt;/div&gt;'</span> +</span><br><span class="line">    <span class="string">'&lt;div&gt;B&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Or, if the template contains only text:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'example'</span>, &#123;</span><br><span class="line">  template: <span class="string">'Hello world'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>In both cases, the instance will become a <strong>fragment instance</strong> which doesn’t have a root element. A fragment instance’s <code>$el</code> will point to an “anchor node”, which is an empty Text node (or a Comment node in debug mode). What’s probably more important though, is that directives, transitions and attributes (except for props) on the component element will not take any effect - because there is no root element to bind them to:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- doesn't work due to no root element --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">example</span> <span class="attribute">v-show</span>=<span class="value">"ok"</span> <span class="attribute">v-transition</span>=<span class="value">"fade"</span>&gt;</span><span class="tag">&lt;/<span class="title">example</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- props work as intended --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">example</span> <span class="attribute">prop</span>=<span class="value">"&#123;&#123;someData&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="title">example</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>There are, of course, valid use cases for fragment instances, but it is in general a good idea to give your component template a single root element. It ensures directives and attributes on the component element to be properly transferred, and also results in slightly better performance.</p>
+<h2 id="changing-default-options">Changing Default Options</h2>
+<p>It is possible to change the default value of an option by setting it on the global <code>Vue.options</code> object. For example, you can set <code>Vue.options.replace = false</code> to give all Vue instances the behavior of <code>replace: false</code>. Use this feature carefully, and use it only when you are starting a new project, because it affects the behavior of every instance.</p>
+<p>Next: <a href="/guide/faq.html">Common FAQs</a>.</p>
+
+    <div class="footer">Нашли ошибку или хотите помочь с переводом документации? <a href="https://github.com/vuejs-ru/vuejs.org" target="_blank">Создайте форк на Github</a>!</div>
+</div>
+
+                
+            </div>
+            <script src="/vuejs.org/js/smooth-scroll.min.js"></script>
+            <script src="/vuejs.org/js/common.js"></script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        </script>
+    </body>
+</html>
